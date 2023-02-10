@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:17:17 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/09 20:19:35 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/09 21:29:53 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,59 +20,60 @@
 t_stack* new_stack() // constructs a new stack
 {
 	t_stack* s = (t_stack*)malloc(sizeof(t_stack));
-	s->stack_size = 0;
-	s->top = NULL;
-	s->bottom = NULL;
+	// s->stack_size = 0;
+	s = NULL;
 	return s;
 }
 
 int is_empty(t_infos *infos)
 {
-	if(infos->a->top == NULL)
+	if(infos->a == NULL)
 		return 1;
 	else
 		return 0;
 }
 
 int get_top(t_infos *infos){
-	return infos->a->top->number;
+	return infos->a->number;
 }
 
 void push_to_a(int x, t_infos *infos)
 {
-	t_list *temp = (t_list *)malloc(sizeof(t_list));
+	t_stack *temp = (t_stack *)malloc(sizeof(t_stack));
+	t_stack	*tmp_a;
 	if(is_empty(infos) == 1)
 	{
 		temp->number = x;
 		temp->next = NULL;
 		temp->previous = NULL;
-		infos->a->top = temp;
-		infos->a->stack_size++;
+		infos->a = temp;
+		infos->stack_size++;
 	}
 	else
 	{
+		tmp_a = infos->a;
+		while (tmp_a->next != NULL)
+			tmp_a = tmp_a->next;
 		temp->number = x;
-		temp->next = infos->a->top;
-		temp->previous = NULL;
-		infos->a->top->previous = temp;
-		
-		infos->a->top = temp;
-		infos->a->stack_size++;
+		temp->next = NULL;
+		temp->previous = tmp_a;
+		tmp_a->next = temp;
+		infos->stack_size++;
 	}
 }
 
 void pop_from_a(t_infos *infos)
 {
-	t_list *temp;
-	if(infos->a->top == NULL) return;
-	temp = infos->a->top;
-	infos->a->top = infos->a->top->next;
+	t_stack *temp;
+	if(infos->a == NULL) return;
+	temp = infos->a;
+	infos->a = infos->a->next;
 	free(temp);
 }
 
 void print_stack(t_infos *infos)
 {
-	t_list *temp = infos->a->top;
+	t_stack *temp = infos->a;
 	if(is_empty(infos) == 1)
 	{
 		printf("Stack is Empty\n");

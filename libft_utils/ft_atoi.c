@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 23:48:25 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/09 16:58:51 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/10 12:58:44 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ long double ft_atoi(const char *str)
 	{
 		res *= 10;
 		res += *str - '0';
-		// if (sign > 0 && res >= 9223372036854775807UL)
-		// 	return (-1);
-		// if (sign < 0 && res >= 9223372036854775808UL)
-		// 	return (0);
 		str++;
 	}
 	return (res * sign);

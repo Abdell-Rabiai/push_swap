@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/09 16:27:57 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:13:21 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 #include "../ft_printf/ft_printf.h"
 #include "../libft_utils/libft_utils.h"
 
-typedef struct s_stack
-{
-	int		stack_size;
-	t_list	*top;
-	t_list	*bottom;
-}			t_stack;
+// typedef struct s_stack
+// {
+// 	int				number;
+// 	struct s_stack	*next;
+// 	struct s_stack	*previous;
+// }					t_stack;
 
 typedef struct s_infos
 {
+	int		stack_size;
 	t_stack *a;
 	t_stack *b; 
 }			t_infos;

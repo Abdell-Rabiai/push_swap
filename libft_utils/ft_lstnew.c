@@ -6,17 +6,17 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:08:46 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/07 20:00:43 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:13:05 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft_utils.h"
 
-t_list	*ft_lstnew(int content)
+t_stack	*ft_lstnew(int content)
 {
-	t_list	*new_node;
+	t_stack	*new_node;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
 	(*new_node).number = content;
