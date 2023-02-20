@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/20 18:46:52 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/20 21:16:41 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,21 @@ void	parse_arguments(int argc, char **argv)
 	char	**splitd_arguments;
 	char	*joined_arguments;
 
-	i = 1;
+	// i = 1;
 	if (argc < 2)
 		error_and_exit("ERROR : Not Enough Arguments !!");
 	joined_arguments = join_arguments(argc, argv);
+	ft_printf("{%s}\n", joined_arguments);
 	splitd_arguments = ft_split(joined_arguments, ' ');
+	while (*splitd_arguments)
+	{
+		printf("{%s}\n", *splitd_arguments);
+		splitd_arguments++;
+	}
 	if (check_duplicates(splitd_arguments))
 		error_and_exit("ERROR : There Are Duplicate Arguments !!");
 	else
 		ft_printf("EVERYTHING IS GOOD !!\n");
 	ft_printf("{%s}\n", joined_arguments);
+	printf("{%s}\n", argv[1]);
 }
