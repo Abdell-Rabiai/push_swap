@@ -6,30 +6,30 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 23:48:25 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/10 12:58:44 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/20 12:45:35 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_utils.h"
 
-int ft_iswspace(char c)
+int	ft_iswspace(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);
 	return (0);
 }
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-long double ft_atoi(const char *str)
+long double	ft_atoi(const char *str)
 {
-	int sign;
-	long double res;
+	int			sign;
+	long double	res;
 
 	sign = 1;
 	res = 0;
@@ -53,10 +53,13 @@ long double ft_atoi(const char *str)
 
 int	get_index_base(int c, int base)
 {
-	char *str = "0123456789abcdef";
-	char *str2 = "0123456789ABCDEF";
-	int  i = 0;
+	char	*str;
+	char	*str2;
+	int		i;
 
+	str = "0123456789abcdef";
+	str2 = "0123456789ABCDEF";
+	i = 0;
 	while (i < base)
 	{
 		if (c == str[i] || c == str2[i])
@@ -66,10 +69,10 @@ int	get_index_base(int c, int base)
 	return (-1);
 }
 
-int ft_atohex(const char *str)
+int	t_atohex(const char *str)
 {
-	int sign;
-	long double res;
+	int			sign;
+	long double	res;
 
 	sign = 1;
 	res = 0;
@@ -82,7 +85,7 @@ int ft_atohex(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	while (*str) // "15"
+	while (*str)
 	{
 		res *= 16;
 		res += get_index_base(*str, 16);
