@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:26:19 by arabiai           #+#    #+#             */
-/*   Updated: 2023/01/27 18:33:57 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/20 16:31:38 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,5 @@ char    *ft_strjoin(char const *s1, char const *s2)
                 return (NULL);
         ft_strlcpy(strjoin, s1, ft_strlen(s1) + 1);
         ft_strlcat(strjoin, s2, len_total + 1);
-        free((char *)s1);
         return (strjoin);
 }

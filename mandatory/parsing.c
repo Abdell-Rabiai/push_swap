@@ -6,50 +6,68 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/10 13:26:51 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/20 18:46:52 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_argv(char *str)
+char	*join_arguments(int argc, char **argv)
 {
-    int i;
+	int		i;
+	char	*arg;
+	char	*temp;
 
-    i = 0;
-    while (str[i])
-    {
-        while (str[i] == ' ')
-            i++;
-        if ((str[i] == '+' || str[i] == '-') && i == 0)
-            i++;
-        if ((str[i] > '9' || str[i] < '0') && str[i])
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 1;
+	arg = "";
+	while (i < argc)
+	{
+		check_argument(argv[i]);
+		temp = ft_strjoin(argv[i], " ");
+		arg = ft_strjoin(arg, temp);
+		i++;
+	}
+	return (arg);
 }
 
-void push_argvi_to_a(char *str, t_infos *data)
+int	check_duplicates(char **strs)
 {
-    char **numbers;
-    int i;
-    long double my_number;
+	int		i;
+	int		j;
+	char	*temp;
 
-    i = 0;
-    my_number = 0;
-    numbers = ft_split(str, ' ');
-    
-    while (*numbers)
-    {
-        my_number = ft_atoi(*numbers);
-        if (my_number >= -2147483648 && my_number <= 2147483647)
-            push_to_a(my_number, data);
-        else
-        {
-            ft_printf("ERROR : not an integer value\n");
-            exit(EXIT_FAILURE);
-        }
-        numbers++;
-    }
+	i = 0;
+	j = 0;
+	while (strs[i])
+	{
+		temp = strs[i];
+		j = i + 1;
+		while (strs[j])
+		{
+			if (ft_strncmp(temp, strs[j], ft_strlen(temp)) == 0
+				&& ft_strncmp(temp, strs[j], ft_strlen(strs[j])) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+void	parse_arguments(int argc, char **argv)
+{
+	int		i;
+	char	**splitd_arguments;
+	char	*joined_arguments;
+
+	i = 1;
+	if (argc < 2)
+		error_and_exit("ERROR : Not Enough Arguments !!");
+	joined_arguments = join_arguments(argc, argv);
+	splitd_arguments = ft_split(joined_arguments, ' ');
+	if (check_duplicates(splitd_arguments))
+		error_and_exit("ERROR : There Are Duplicate Arguments !!");
+	else
+		ft_printf("EVERYTHING IS GOOD !!\n");
+	ft_printf("{%s}\n", joined_arguments);
 }

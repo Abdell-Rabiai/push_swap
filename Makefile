@@ -36,9 +36,12 @@ $(NAME) : $(OBJECTS)
 %.o: %.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-puswapexc : $(HEADER_FILES)
-	$(CC) $(CFLAGS) mandatory/push_swap_main.c library libftprintf.a -o $(NAME)
-	$(ECHO2)
+# puswapexc : $(HEADER_FILES)
+# 	$(CC) $(CFLAGS) mandatory/push_swap_main.c library libftprintf.a -o $(NAME)
+# 	$(ECHO2)
+
+puswapexc : library
+	$(CC) $(CFLAGS) -o $(NAME) library libftprintf.a
 
 libftprintf :
 	@cd ft_printf && make && mv libftprintf.a ../
