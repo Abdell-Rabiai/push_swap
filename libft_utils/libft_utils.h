@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:05:33 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/20 18:31:24 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:52:14 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
 # include <sys/wait.h>
 
 typedef struct s_stack
@@ -29,7 +30,7 @@ typedef struct s_stack
 }					t_stack;
 
 size_t		ft_strlen(const char *str);
-long double	ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 int			ft_atohex(const char *str);
 int			get_index_base(int c, int base);
 char		*ft_strrchr(const char *s, int c);

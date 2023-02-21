@@ -6,18 +6,11 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 23:48:25 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/20 12:45:35 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:04:52 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_utils.h"
-
-int	ft_iswspace(char c)
-{
-	if ((c >= 9 && c <= 13) || c == ' ')
-		return (1);
-	return (0);
-}
 
 int	ft_isdigit(int c)
 {
@@ -26,29 +19,41 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-long double	ft_atoi(const char *str)
+int	is_whitespace(char c)
 {
-	int			sign;
-	long double	res;
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
 
+long	ft_atoi(const char *str)
+{
+	long	result;
+	int		sign;
+
+	result = 0;
 	sign = 1;
-	res = 0;
-	while (*str && ft_iswspace(*str))
+	while (is_whitespace(*str))
 		str++;
-	if (*str == '-')
+	if (*str && (*str == '-' || *str == '+'))
 	{
-		sign *= -1;
+		if (*str == '-')
+		sign *= (-1);
+	str++;
+	}
+	if (!(*str))
+		return (UINT_MAX);
+	while (*str)
+	{
+		result *= 10;
+		result += *str - '0';
+		if ((result > 2147483647 && sign == 1) || result * (-1) < INT_MIN
+			|| !ft_isdigit(*str))
+			return (UINT_MAX);
 		str++;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str && ft_isdigit(*str))
-	{
-		res *= 10;
-		res += *str - '0';
-		str++;
-	}
-	return (res * sign);
+	return (result * (sign));
 }
 
 int	get_index_base(int c, int base)
@@ -69,27 +74,27 @@ int	get_index_base(int c, int base)
 	return (-1);
 }
 
-int	t_atohex(const char *str)
-{
-	int			sign;
-	long double	res;
+// int	t_atohex(const char *str)
+// {
+// 	int			sign;
+// 	long double	res;
 
-	sign = 1;
-	res = 0;
-	while (*str && ft_iswspace(*str))
-		str++;
-	if (*str == '-')
-	{
-		sign *= -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str)
-	{
-		res *= 16;
-		res += get_index_base(*str, 16);
-		str++;
-	}
-	return (res * sign);
-}
+// 	sign = 1;
+// 	res = 0;
+// 	while (*str && ft_iswhitespace(*str))
+// 		str++;
+// 	if (*str == '-')
+// 	{
+// 		sign *= -1;
+// 		str++;
+// 	}
+// 	else if (*str == '+')
+// 		str++;
+// 	while (*str)
+// 	{
+// 		res *= 16;
+// 		res += get_index_base(*str, 16);
+// 		str++;
+// 	}
+// 	return (res * sign);
+// }

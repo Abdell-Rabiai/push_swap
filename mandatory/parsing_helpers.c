@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:32:18 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/20 18:46:18 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/20 20:26:44 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,16 @@ int	is_there_character(char *arg)
 
 int	is_there_character_after_the_number(char *arg)
 {
-	while (*arg == '-' || *arg == '+')
+	while (*arg == ' ')
 		arg++;
-	while ((*arg >= '0' && *arg <= '9') || *arg == ' ')
+	if (*arg == '-' || *arg == '+')
 		arg++;
-	while (*arg)
-	{
-		if ((*arg > '9' || *arg < '0') && *arg != '\0')
-			return (1);
-		else
-			break ;
-	}
-	return (0);
+	while ((*arg >= '0' && *arg <= '9'))
+		arg++;
+	if ((*arg > '9' || *arg < '0') && *arg != '\0' && *arg != ' ')
+		return (1);
+	else
+		return (0);
 }
 
 void	check_argument(char *arg)
