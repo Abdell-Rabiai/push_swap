@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "push_swap.h": "c",
+        "libft_utils.h": "c"
+    }
+}

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:05:33 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 14:52:14 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 16:20:38 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <limits.h>
 # include <sys/wait.h>
 
-typedef struct s_stack
+typedef struct s_list
 {
 	int				number;
-	struct s_stack	*next;
-	struct s_stack	*previous;
-}					t_stack;
+	struct s_list	*next;
+	struct s_list	*previous;
+}					t_list;
 
 size_t		ft_strlen(const char *str);
 long		ft_atoi(const char *str);
@@ -46,11 +46,10 @@ char		**ft_split(char const *s, char c);
 
 /**linked lists*/
 
-t_stack		*ft_lstnew(int number);
-void		ft_lstadd_front(t_stack **lst, t_stack *new);
-int			ft_lstsize(t_stack *lst);
-t_stack		*ft_lstlast(t_stack *lst);
-void		ft_lstadd_back(t_stack **lst, t_stack *new);
-void		ft_lstclear(t_stack **lst, void (*del)(void*));
+t_list		*ft_lstnew(int number);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
 
 #endif

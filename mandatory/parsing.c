@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 14:50:46 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 16:07:48 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fill_numbers(char **strs, t_infos *data)
 	{
 		atoi = ft_atoi(strs[i]);
 		if (atoi == UINT_MAX)
-			error_and_exit("Invalid Argument");
+			error_and_exit("ERROR : Argument Is Not An Integer");
 		data->numbers[i] = atoi;
 		i++;
 	}

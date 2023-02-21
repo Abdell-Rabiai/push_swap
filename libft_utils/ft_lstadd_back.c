@@ -6,15 +6,15 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:22:27 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/10 13:12:42 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 16:21:05 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft_utils.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_stack	*temp;
+	t_list	*temp;
 
 	if (!new)
 		return ;

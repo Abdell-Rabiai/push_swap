@@ -6,13 +6,13 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:17:09 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/10 13:12:56 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/21 16:21:26 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft_utils.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (NULL);

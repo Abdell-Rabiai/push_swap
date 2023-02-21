@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   deque_operations1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 10:21:51 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 19:11:24 by arabiai          ###   ########.fr       */
+/*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
+/*   Updated: 2023/02/21 19:11:28 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft_utils.h"
+#include "push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int ft_get_rear(t_deque *deck)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	if (deck->tail == NULL)
+		return (INT_MAX);
+	return (deck->tail->number);
+}
+
+int ft_get_front(t_deque *deck)
+{
+	if (deck->head == NULL)
+		return (INT_MAX);
+	return (deck->head->number);
+}
+
+int ft_is_empty(t_deque *deck)
+{
+	if(deck->head == NULL)
+		return (1);
+	else
+		return (0);
+}
+
+int ft_get_size(t_deque *deck)
+{
+	return (deck->size);
 }
