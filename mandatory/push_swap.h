@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 19:08:31 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:11:53 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,15 @@ void		check_argument(char *arg);
 t_node		*ft_new_node(int number);
 void		ft_push_front(t_deque *deck, int number);
 void		ft_push_rear(t_deque *deck, int number);
-int			ft_pop_front(t_deque *deck);
+long			ft_pop_front(t_deque *deck);
 int			ft_pop_rear(t_deque *deck);
+/*Push Swao Moves*/
+void 	swap(t_deque *deck, char type, bool print);
+void	swap_both(t_infos *data);
+void	push_a(t_infos *data);
+void 	push_b(t_infos *data);
+void	rotate_up(t_deque *deck, char type, bool print);
+void	rotate_up_both(t_infos *data);
+void 	rotate_down(t_deque *deck, char type, bool print);
+void	rotate_down_both(t_infos *data);
 #endif

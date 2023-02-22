@@ -6,35 +6,26 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 19:25:09 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:23:29 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initialize_data(t_infos *data)
+// create a funtion that will initialize the data structure data
+void initialize_data(t_infos *data)
 {
-	data->a->head->next = NULL;
-	data->a->head->previous = NULL;
-	data->a->head->number = 0;
-	
-	// data->a->tail->next = NULL;
-	// data->a->tail->previous = NULL;
-	// data->a->tail->number = 0;
-	
-	// data->b->head->next = NULL;
-	// data->b->head->previous = NULL;
-	// data->b->head->number = 0;
-	
-	// data->b->tail->next = NULL;
-	// data->b->tail->previous = NULL;
-	// data->b->tail->number = 0;
-	
-	data->numbers = NULL;
-	data->stack_size = 0;
+	data->a = (t_deque *)malloc(sizeof(t_deque));
+	data->b = (t_deque *)malloc(sizeof(t_deque));
+	data->a->head = NULL;
+	data->a->tail = NULL;
+	data->a->size = 0;
+	data->b->head = NULL;
+	data->b->tail = NULL;
+	data->b->size = 0;
 }
 
-void fill_b(t_infos *data)
+void fill_a(t_infos *data)
 {
 	int i;
 
@@ -46,24 +37,63 @@ void fill_b(t_infos *data)
 	}
 }
 
-void print_a(t_infos *data)
+void print_ab(t_infos *data)
 {
-	t_node *temp;
+	t_node *temp_a;
+	t_node *temp_b;
 
-	temp = data->a->head;
-	while (temp != NULL)
+	temp_a = data->a->head;
+	temp_b = data->b->head;
+	ft_printf("stack A <----> stack B\n");
+	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf("%d\n", temp->number);
-		temp = temp->next;
+		ft_printf("%d              %d\n", temp_a->number, temp_b->number);
+		temp_a = temp_a->next;
+		temp_b = temp_b->next;
+	}
+	while (temp_a != NULL)
+	{
+		ft_printf("%d\n", temp_a->number);
+		temp_a = temp_a->next;
+	}
+	while (temp_b != NULL)
+	{
+		ft_printf("               %d\n", temp_b->number);
+		temp_b = temp_b->next;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_infos	data;
+	t_infos	*data;
 
-	initialize_data(&data);
-	parse_arguments(argc, argv, &data);
-	fill_b(&data);
-	print_a(&data);
+	data = (t_infos *)malloc(sizeof(t_infos));
+	initialize_data(data);
+	parse_arguments(argc, argv, data);
+	fill_a(data);
+
+	printf("\nBEFORE \n\n");
+	print_ab(data);
+	
+	swap(data->a, 'a', 1);
+
+	printf("Size Before %d :\n", data->a->size);
+	push_b(data);
+	push_b(data);
+	push_b(data);
+	printf("Size after %d :\n", data->a->size);
+	rotate_up(data->a, 'a', 1);
+	rotate_up(data->b, 'b', 1);
+
+	rotate_down(data->a, 'a', 1);
+	rotate_down(data->b, 'b', 1);
+	rotate_down_both(data);
+
+	push_a(data);
+	push_a(data);
+	push_a(data);
+
+	
+	printf("\nAFTER \n\n");
+	print_ab(data);
 }
