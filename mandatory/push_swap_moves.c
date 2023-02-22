@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:41 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/22 17:24:08 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:25:38 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void rotate_up(t_deque *deck, char type, bool print)
 }
 void rotate_up_both(t_infos *data)
 {
+	if (data->a->size <= 1 && data->b->size <= 1)
+		return ;
 	rotate_up(data->a, 'a', 0);
 	rotate_up(data->b, 'b', 0);
 	printf("rr\n");
@@ -91,7 +93,6 @@ void rotate_down(t_deque *deck, char type, bool print)
 {
 	int	temp_last;
 
-	printf("%c |%d|\n", type, deck->size);
 	if (deck->size <= 1)
 		return;
 	temp_last = ft_pop_rear(deck);
