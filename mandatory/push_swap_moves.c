@@ -6,43 +6,50 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:41 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/22 17:25:38 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/23 14:21:32 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// sa (swap a): Swap the first 2 elements at the top of stack a.
-// Do nothing if there is only one or no elements.
-void swap(t_deque *deck, char type, bool print)
+void sa(t_infos *data, bool print)
 {
 	int	temp_first;
 	int	temp_second;
 
-	if (deck->size <= 1)
+	if (data->a->size <= 1)
 		return;
-	temp_first = ft_pop_front(deck);
-	temp_second = ft_pop_front(deck);
-	ft_push_front(deck, temp_first);
-	ft_push_front(deck, temp_second);
-
+	temp_first = ft_pop_front(data->a);
+	temp_second = ft_pop_front(data->a);
+	ft_push_front(data->a, temp_first);
+	ft_push_front(data->a, temp_second);
 	if (print)
-	{
-		if (type == 'a')
-			printf("sa\n");
-		else
-			printf("sb\n");		
-	}
+		ft_printf("sa\n");
 }
 
-void	swap_both(t_infos *data)
+void sb(t_infos *data, bool print)
 {
-	swap(data->a, 'a', 0);
-	swap(data->b, 'b', 0);
-	printf("ss\n");
+	int	temp_first;
+	int	temp_second;
+
+	if (data->b->size <= 1)
+		return;
+	temp_first = ft_pop_front(data->b);
+	temp_second = ft_pop_front(data->b);
+	ft_push_front(data->b, temp_first);
+	ft_push_front(data->b, temp_second);
+	if (print)
+		ft_printf("sb\n");
 }
 
-void push_b(t_infos *data)
+void	ss(t_infos *data)
+{
+	sa(data, 0);
+	sb(data, 0);
+	ft_printf("ss\n");
+}
+
+void pb(t_infos *data)
 {
 	int	temp_first_a;
 
@@ -50,10 +57,10 @@ void push_b(t_infos *data)
 		return;
 	temp_first_a = ft_pop_front(data->a);
 	ft_push_front(data->b, temp_first_a);
-	printf("pb\n");
+	ft_printf("pb\n");
 }
 
-void push_a(t_infos *data)
+void pa(t_infos *data)
 {
 	int	temp_first_b;
 
@@ -61,55 +68,71 @@ void push_a(t_infos *data)
 		return;
 	temp_first_b = ft_pop_front(data->b);
 	ft_push_front(data->a, temp_first_b);
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
-void rotate_up(t_deque *deck, char type, bool print)
+void ra(t_infos *data, bool print)
 {
 	int	temp_first;
 
-	if (deck->size <= 1)
+	if (data->a->size <= 1)
 			return ;
-	temp_first = ft_pop_front(deck);
-	ft_push_rear(deck, temp_first);
+	temp_first = ft_pop_front(data->a);
+	ft_push_rear(data->a, temp_first);
 	if (print)
-	{
-		if (type == 'a')
-			printf("ra\n");
-		else
-			printf("rb\n");		
-	}
+		ft_printf("ra\n");		
 }
-void rotate_up_both(t_infos *data)
+
+void rb(t_infos *data, bool print)
+{
+	int	temp_first;
+
+	if (data->b->size <= 1)
+			return ;
+	temp_first = ft_pop_front(data->b);
+	ft_push_rear(data->b, temp_first);
+	if (print)
+		ft_printf("rb\n");		
+}
+
+void rr(t_infos *data)
 {
 	if (data->a->size <= 1 && data->b->size <= 1)
 		return ;
-	rotate_up(data->a, 'a', 0);
-	rotate_up(data->b, 'b', 0);
-	printf("rr\n");
+	ra(data, 0);
+	rb(data, 0);
+	ft_printf("rr\n");
 }
 
-void rotate_down(t_deque *deck, char type, bool print)
+void rra(t_infos *data, bool print)
 {
 	int	temp_last;
 
-	if (deck->size <= 1)
+	if (data->a->size <= 1)
 		return;
-	temp_last = ft_pop_rear(deck);
-	ft_push_front(deck, temp_last);
+	temp_last = ft_pop_rear(data->a);
+	ft_push_front(data->a, temp_last);
 	if (print)
-	{
-		if (type == 'a')
-			printf("rra\n");
-		else
-			printf("rrb\n");		
-	}
+		ft_printf("rra\n");	
 }
-void rotate_down_both(t_infos *data)
+
+void rrb(t_infos *data, bool print)
+{
+	int	temp_last;
+
+	if (data->b->size <= 1)
+		return;
+	temp_last = ft_pop_rear(data->b);
+	ft_push_front(data->b, temp_last);
+	if (print)
+		ft_printf("rrb\n");	
+}
+
+void rrr(t_infos *data)
 {
 	if (data->a->size <= 1 && data->b->size <= 1)
 		return ;
-	rotate_down(data->a, 'a', 0);
-	rotate_down(data->b, 'b', 0);
-	printf("rrr\n");
+	rra(data, 0);
+	rrb(data, 0);
+	ft_printf("rrr\n");
 }

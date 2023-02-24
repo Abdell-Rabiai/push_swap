@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/22 17:23:29 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/24 18:21:40 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void fill_a(t_infos *data)
 		ft_push_rear(data->a, data->numbers[i]);
 		i++;
 	}
+	return_max(data->a);
+	return_min(data->a);
+	
 }
 
 void print_ab(t_infos *data)
@@ -44,16 +47,16 @@ void print_ab(t_infos *data)
 
 	temp_a = data->a->head;
 	temp_b = data->b->head;
-	ft_printf("stack A <----> stack B\n");
+	ft_printf("stack A {max : %d} {min : %d} <----> stack B\n", data->a->max, data->a->min);
 	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf("%d              %d\n", temp_a->number, temp_b->number);
+		ft_printf("%d[%d]              %d\n", temp_a->number, temp_a->index, temp_b->number);
 		temp_a = temp_a->next;
 		temp_b = temp_b->next;
 	}
 	while (temp_a != NULL)
 	{
-		ft_printf("%d\n", temp_a->number);
+		ft_printf("%d[%d]\n", temp_a->number, temp_a->index);
 		temp_a = temp_a->next;
 	}
 	while (temp_b != NULL)
@@ -71,29 +74,12 @@ int	main(int argc, char **argv)
 	initialize_data(data);
 	parse_arguments(argc, argv, data);
 	fill_a(data);
-
-	printf("\nBEFORE \n\n");
+	printf("\n----------->BEFORE<----------- \n\n");
 	print_ab(data);
+	index_the_stack(data->a);
 	
-	swap(data->a, 'a', 1);
-
-	printf("Size Before %d :\n", data->a->size);
-	push_b(data);
-	push_b(data);
-	push_b(data);
-	printf("Size after %d :\n", data->a->size);
-	rotate_up(data->a, 'a', 1);
-	rotate_up(data->b, 'b', 1);
-
-	rotate_down(data->a, 'a', 1);
-	rotate_down(data->b, 'b', 1);
-	rotate_down_both(data);
-
-	push_a(data);
-	push_a(data);
-	push_a(data);
-
-	
-	printf("\nAFTER \n\n");
+	// sort_the_stack()
+		
+	printf("\n---------->AFTER<---------- \n\n");
 	print_ab(data);
 }

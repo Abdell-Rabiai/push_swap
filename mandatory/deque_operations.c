@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/22 17:11:37 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:30:56 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node *ft_new_node(int number)
 	new_node->number = number;
 	new_node->next = NULL;
 	new_node->previous = NULL;
+	new_node->index = -1;
 	return (new_node);
 }
 
