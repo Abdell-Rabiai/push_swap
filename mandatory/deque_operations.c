@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 18:53:02 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 21:42:08 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ft_free_everything(t_infos *data)
 	free(data->numbers);
 }
 
-t_node *ft_new_node(int number)
+t_node *ft_new_node(int number, int index)
 {
 	t_node *new_node;
 
@@ -42,61 +42,55 @@ t_node *ft_new_node(int number)
 	new_node->number = number;
 	new_node->next = NULL;
 	new_node->previous = NULL;
-	new_node->index = -1;
+	new_node->index = index;
 	return (new_node);
 }
 
-void	ft_push_front(t_deque *deck, int number)
+void	ft_push_front(t_deque *deck, t_node *poped)
 {
-	t_node *new_node;
-
-	new_node = ft_new_node(number);
-	if (!new_node)
-		return;
 	if (deck->head == NULL)
 	{
-		deck->head = new_node;
-		deck->tail = new_node;
+		deck->head = poped;
+		deck->tail = poped;
 	}
 	else
 	{
-		new_node->next = deck->head;
-		deck->head->previous = new_node;
-		deck->head = new_node;
+		poped->next = deck->head;
+		deck->head->previous = poped;
+		deck->head = poped;
 	}
 	deck->size++;
 }
 
-void ft_push_rear(t_deque *deck, int number)
+void ft_push_rear(t_deque *deck, t_node *poped)
 {
-	t_node *new_node;
-
-	new_node = ft_new_node(number);
-	if (!new_node)
-		return;
 	if (deck->tail == NULL)
 	{
-		deck->head = new_node;
-		deck->tail = new_node;
+		deck->head = poped;
+		deck->tail = poped;
 	}
 	else
 	{
-		deck->tail->next = new_node;
-		new_node->previous = deck->tail;
-		deck->tail = new_node;
+		deck->tail->next = poped;
+		poped->previous = deck->tail;
+		deck->tail = poped;
 	}
 	deck->size++;
 }
 
-int ft_pop_front(t_deque *deck)
+t_node *ft_pop_front(t_deque *deck)
 {
 	t_node *temp;
-	int number;
+	t_node *poped;
 
+	int number;
 	if (deck->head == NULL)
-		return (UINT_MAX);
+		return (NULL);
 	temp = deck->head;
 	number = temp->number;
+	poped = ft_new_node(number, temp->index);
+	if (!poped)
+		return (NULL);
 	deck->head = deck->head->next;
 	if (deck->head == NULL)
 		deck->tail = NULL;
@@ -104,18 +98,23 @@ int ft_pop_front(t_deque *deck)
 		deck->head->previous = NULL;
 	free(temp);
 	deck->size--;
-	return (number);
+	return (poped);
 }
 
-int ft_pop_rear(t_deque *deck)
+t_node *ft_pop_rear(t_deque *deck)
 {
 	t_node *temp;
+	t_node *poped;
+
 	int number;
 
 	if (deck->tail == NULL)
-		return (INT_MAX);
+		return (NULL);
 	temp = deck->tail;
 	number = temp->number;
+	poped = ft_new_node(number, temp->index);
+	if (!poped)
+		return (NULL);
 	deck->tail = deck->tail->previous;
 	if (deck->tail == NULL)
 		deck->head = NULL;
@@ -123,5 +122,5 @@ int ft_pop_rear(t_deque *deck)
 		deck->tail->next = NULL;
 	free(temp);
 	deck->size--;
-	return (number);
+	return (poped);
 }

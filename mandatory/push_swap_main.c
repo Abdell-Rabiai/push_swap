@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 18:53:17 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 21:42:45 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void initialize_data(t_infos *data)
 void fill_a(t_infos *data)
 {
 	int i;
-
+	t_node *temp;
 	i = 0;
 	while (i < data->stack_size)
 	{
-		ft_push_rear(data->a, data->numbers[i]);
+		temp = ft_new_node(data->numbers[i], -1);
+		ft_push_rear(data->a, temp);
 		i++;
 	}
 	return_max(data->a);
@@ -77,8 +78,7 @@ int	main(int argc, char **argv)
 	print_ab(&data);
 	index_the_stack((&data)->a);
 	
-	// sort_the_stack(&data);
-
+	sort_the_stack(&data);
 		
 	printf("\n---------->AFTER<---------- \n\n");
 	print_ab(&data);

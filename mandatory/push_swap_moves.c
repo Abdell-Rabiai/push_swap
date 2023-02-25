@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:41 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/23 14:21:32 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 21:35:14 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void sa(t_infos *data, bool print)
 {
-	int	temp_first;
-	int	temp_second;
+	t_node	*temp_first;
+	t_node	*temp_second;
 
 	if (data->a->size <= 1)
 		return;
@@ -29,8 +29,8 @@ void sa(t_infos *data, bool print)
 
 void sb(t_infos *data, bool print)
 {
-	int	temp_first;
-	int	temp_second;
+	t_node	*temp_first;
+	t_node	*temp_second;
 
 	if (data->b->size <= 1)
 		return;
@@ -51,7 +51,7 @@ void	ss(t_infos *data)
 
 void pb(t_infos *data)
 {
-	int	temp_first_a;
+	t_node	*temp_first_a;
 
 	if (data->a->size == 0)
 		return;
@@ -62,7 +62,7 @@ void pb(t_infos *data)
 
 void pa(t_infos *data)
 {
-	int	temp_first_b;
+	t_node	*temp_first_b;
 
 	if (data->b->size == 0)
 		return;
@@ -73,7 +73,7 @@ void pa(t_infos *data)
 
 void ra(t_infos *data, bool print)
 {
-	int	temp_first;
+	t_node	*temp_first;
 
 	if (data->a->size <= 1)
 			return ;
@@ -85,7 +85,7 @@ void ra(t_infos *data, bool print)
 
 void rb(t_infos *data, bool print)
 {
-	int	temp_first;
+	t_node	*temp_first;
 
 	if (data->b->size <= 1)
 			return ;
@@ -106,7 +106,7 @@ void rr(t_infos *data)
 
 void rra(t_infos *data, bool print)
 {
-	int	temp_last;
+	t_node	*temp_last;
 
 	if (data->a->size <= 1)
 		return;
@@ -118,7 +118,7 @@ void rra(t_infos *data, bool print)
 
 void rrb(t_infos *data, bool print)
 {
-	int	temp_last;
+	t_node	*temp_last;
 
 	if (data->b->size <= 1)
 		return;
