@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/24 14:30:56 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:53:02 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void ft_push_rear(t_deque *deck, int number)
 	deck->size++;
 }
 
-long	ft_pop_front(t_deque *deck)
+int ft_pop_front(t_deque *deck)
 {
 	t_node *temp;
 	int number;

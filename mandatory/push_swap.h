@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 13:53:11 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:53:08 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		check_argument(char *arg);
 t_node		*ft_new_node(int number);
 void		ft_push_front(t_deque *deck, int number);
 void		ft_push_rear(t_deque *deck, int number);
-long		ft_pop_front(t_deque *deck);
+int		ft_pop_front(t_deque *deck);
 int			ft_pop_rear(t_deque *deck);
 void		ft_free_everything(t_infos *data);
 void		ft_free_stack(t_deque *a);
@@ -78,4 +78,5 @@ int		return_max(t_deque *a);
 int		return_min(t_deque *a);
 int		return_min_for_indexing(t_deque *a);
 void	index_the_stack(t_deque *a);
+bool	is_sorted(t_deque *a);
 #endif

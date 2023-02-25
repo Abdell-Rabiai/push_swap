@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/24 18:21:40 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:53:17 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int	main(int argc, char **argv)
 	print_ab(&data);
 	index_the_stack((&data)->a);
 	
-	// sort_the_stack();
+	// sort_the_stack(&data);
+
 		
 	printf("\n---------->AFTER<---------- \n\n");
 	print_ab(&data);
-	while(1);
 	ft_free_everything(&data);
 }

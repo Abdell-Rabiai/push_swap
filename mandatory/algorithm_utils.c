@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:12 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 12:55:32 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/25 17:50:27 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,44 +69,94 @@ int return_min_for_indexing(t_deque *a)
 	return min_num;
 }
 
-void index_the_stack(t_deque *a)
+// void index_the_stack(t_deque *a)
+// {
+// 	t_node	*temp_a;
+// 	int		i;
+// 	int 	b;
+// 	int		min;
+
+// 	temp_a = a->head;
+// 	i = 0;
+// 	while (temp_a != NULL)
+// 	{
+// 		b = 0;
+// 		min = return_min_for_indexing(a);
+// 		printf("{min -> %d number %d}\n", min, temp_a->number);
+// 		if (temp_a->number == min && temp_a->index == -1)
+// 		{
+// 			printf("before (%d == [%d])\n", min, temp_a->index);
+// 			temp_a->index = i++;
+// 			printf("after (%d == [%d])\n", min, temp_a->index);
+// 			temp_a = a->head;
+// 			b = 1;
+// 		}
+// 		if (b == 0)
+// 			temp_a = temp_a->next;
+// 	}
+// }
+
+void index_the_stack(t_deque *a) // index the stack using two nested while loops and a counter
 {
 	t_node	*temp_a;
+	t_node	*temp_b;
 	int		i;
-	int 	b;
-	int		min;
 
 	temp_a = a->head;
 	i = 0;
 	while (temp_a != NULL)
 	{
-		b = 0;
-		min = return_min_for_indexing(a);
-		if (temp_a->number == min && temp_a->index == -1)
+		temp_b = a->head;
+		while (temp_b != NULL)
 		{
-			temp_a->index = i++;
-			temp_a = a->head;
-			b = 1;
+			if (temp_a->number > temp_b->number)
+				i++;
+			temp_b = temp_b->next;
 		}
-		if (b == 0)
-			temp_a = temp_a->next;
+		temp_a->index = i;
+		i = 0;
+		temp_a = temp_a->next;
 	}
 }
 
-// void sort_the_stack(t_infos *data)
+// bool is_sorted(t_deque *a)
 // {
-// 	t_deque *temp_a;
-// 	temp_a = data->a;
-// 	if (data->stack_size == 1 || data->stack_size == 0)
-// 		return ;
-// 	else if (data->stack_size == 2)
-// 		sa(temp_a, 1);
-// 	else if (data->stack_size == 3)
-// 	    sort_3();
-// 	else if (data->stack_size == 4)
-// 	    sort_4();
-// 	else if (data->stack_size == 5)
-// 	    sort_5();
-// 	else
-// 		sort()
+// 	t_node *temp;
+
+// 	temp = a->head;
+// 	while (temp)
+// 	{
+// 		if (temp->index != temp->number)
+// 			return (0);
+// 		temp = temp->next;
+// 	}
+// 	return (1);
 // }
+
+void sort_2(t_infos *data)
+{
+	t_node *temp_a;
+
+	temp_a = data->a->head;
+	if(temp_a->number > temp_a->next->number)
+	{
+		sa(data, 1);
+	}
+}
+
+void sort_the_stack(t_infos *data)
+{
+	t_deque *temp_a;
+
+	temp_a = data->a;
+	if (data->stack_size == 1 || data->stack_size == 0)
+		return ;
+	else if (data->stack_size == 2)
+		sort_2(data);
+	// else if (data->stack_size == 3)
+	//     sort_3(data);
+	// else if (data->stack_size == 5)
+	//     sort_5(data);
+	// else
+	// 	sort(data):
+}

@@ -15,7 +15,7 @@ HEADER_FILES = get_next_line/get_next_line.h mandatory/push_swap.h libft_utils/l
 
 CC = cc
 
-CFLAGS = -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm -rf
 
