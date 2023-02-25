@@ -11,7 +11,7 @@ sgr0 := $(shell tput sgr0)
 
 SOURCES = $(shell ls libft_utils/*.c) $(shell ls mandatory/*.c) $(shell ls get_next_line/*.c) 
 
-HEADER_FILES = get_next_line/get_next_line.h mandatory/push_swap.h
+HEADER_FILES = get_next_line/get_next_line.h mandatory/push_swap.h libft_utils/libft_utils.h
 
 CC = cc
 
@@ -26,25 +26,21 @@ ECHO4 = @echo "$(COLOUR_RED)$(bold)the executable $(NAME) and removed!$(sgr0)$(C
 
 OBJECTS = $(SOURCES:.c=.o)
 
-all : $(NAME) libftprintf puswapexc
+all : libftprintf $(NAME) 
 
-$(NAME) : $(OBJECTS)
-	$(ECHO1)
-	ar rcs library $(OBJECTS)
+# lib : $(OBJECTS) libftprintf
+# 	$(ECHO1)
+# 	ar rcs library $(OBJECTS)
     #ar rcs lib $? meaning add the newest changed objects
 
 %.o: %.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# puswapexc : $(HEADER_FILES)
-# 	$(CC) $(CFLAGS) mandatory/push_swap_main.c library libftprintf.a -o $(NAME)
-# 	$(ECHO2)
-
-puswapexc : library
-	$(CC) $(CFLAGS) -o $(NAME) library libftprintf.a
+$(NAME) : $(OBJECTS) $(HEADER_FILES)
+	 $(CC) $(CFLAGS) $(OBJECTS) libftprintf.a -o $(NAME)
 
 libftprintf :
-	@cd ft_printf && make && mv libftprintf.a ../
+	@cd ft_printf && make
 
 clean :
 	$(RM) $(OBJECTS) $(BONUS_OBJECTS)

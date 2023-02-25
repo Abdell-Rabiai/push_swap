@@ -6,11 +6,11 @@
 #    By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 14:20:54 by arabiai           #+#    #+#              #
-#    Updated: 2023/01/15 20:08:11 by arabiai          ###   ########.fr        #
+#    Updated: 2023/02/25 13:38:30 by arabiai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = ../libftprintf.a
 
 COLOUR_GREEN=\033[92m
 COLOUR_RED=\033[0;31m
@@ -32,7 +32,7 @@ RM = rm -rf
 ECHO1 = @echo "$(COLOUR_GREEN)$(bold)Compiled all files successfully!$(sgr0)$(COLOUR_END)"
 ECHO2 = @echo "$(COLOUR_YELLOW)$(bold)the library $(NAME) created successfully!$(sgr0)$(COLOUR_END)"
 ECHO3 = @echo "$(COLOUR_RED)$(bold)Object files removed!$(sgr0)$(COLOUR_END)"
-ECHO4 = @echo "$(COLOUR_RED)$(bold)the liobrary $(NAME) removed!$(sgr0)$(COLOUR_END)"
+ECHO4 = @echo "$(COLOUR_RED)$(bold)the library $(NAME) removed!$(sgr0)$(COLOUR_END)"
 
 OBJECTS = $(SOURCES:.c=.o)
 
