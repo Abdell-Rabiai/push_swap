@@ -55,6 +55,8 @@ void		ft_push_front(t_deque *deck, int number);
 void		ft_push_rear(t_deque *deck, int number);
 long		ft_pop_front(t_deque *deck);
 int			ft_pop_rear(t_deque *deck);
+void		ft_free_everything(t_infos *data);
+void		ft_free_stack(t_deque *a);
 /*Push Swao Moves*/
 
 void	sa(t_infos *data, bool print);

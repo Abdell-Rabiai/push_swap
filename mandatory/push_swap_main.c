@@ -68,18 +68,19 @@ void print_ab(t_infos *data)
 
 int	main(int argc, char **argv)
 {
-	t_infos	*data;
+	t_infos	data;
 
-	data = (t_infos *)malloc(sizeof(t_infos));
-	initialize_data(data);
-	parse_arguments(argc, argv, data);
-	fill_a(data);
+	initialize_data(&data);
+	parse_arguments(argc, argv, &data);
+	fill_a(&data);
 	printf("\n----------->BEFORE<----------- \n\n");
-	print_ab(data);
-	index_the_stack(data->a);
+	print_ab(&data);
+	index_the_stack((&data)->a);
 	
-	// sort_the_stack()
+	// sort_the_stack();
 		
 	printf("\n---------->AFTER<---------- \n\n");
-	print_ab(data);
+	print_ab(&data);
+	while(1);
+	ft_free_everything(&data);
 }

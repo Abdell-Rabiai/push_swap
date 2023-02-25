@@ -19,12 +19,12 @@ char	*join_arguments(int argc, char **argv)
 	char	*temp;
 
 	i = 1;
-	arg = "";
+	arg = ft_strdup("");
 	while (i < argc)
 	{
 		check_argument(argv[i]);
 		temp = ft_strjoin(argv[i], " ");
-		arg = ft_strjoin(arg, temp);
+		arg = ft_strjoinp(arg, temp);
 		i++;
 	}
 	return (arg);
@@ -86,4 +86,6 @@ void	parse_arguments(int argc, char **argv, t_infos *data)
 	else
 		ft_printf("EVERYTHING IS GOOD !!\n\n");
 	ft_printf("The Args joined : {%s}\n\n", joined_arguments);
+	ft_free_split(splitd_arguments);
+	free(joined_arguments);
 }

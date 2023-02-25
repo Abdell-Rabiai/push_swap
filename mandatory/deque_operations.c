@@ -12,6 +12,28 @@
 
 #include "push_swap.h"
 
+
+void ft_free_stack(t_deque *a)
+{
+	t_node *temp;
+	t_node *t;
+	temp = a->head;
+	while (temp)
+	{
+		t = temp->next;
+		free(temp);
+		temp = t;
+	}
+	free(a);
+}
+
+void ft_free_everything(t_infos *data)
+{
+	ft_free_stack(data->a);
+	ft_free_stack(data->b);
+	free(data->numbers);
+}
+
 t_node *ft_new_node(int number)
 {
 	t_node *new_node;

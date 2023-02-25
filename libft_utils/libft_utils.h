@@ -34,6 +34,7 @@ size_t		ft_strlen(const char *str);
 long		ft_atoi(const char *str);
 int			ft_atohex(const char *str);
 int			get_index_base(int c, int base);
+char		*ft_strjoinp(char const *s1, char const *s2);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		file_error(int argc, char **argv);
