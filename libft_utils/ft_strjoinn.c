@@ -55,12 +55,12 @@
 char	*ft_strjoinp(char const *s1, char const *s2)
 {
 	char	*strjoin;
-	size_t	i;
+	// size_t	i;
 	size_t	len_total;
 
 	if (!s1 || !s2)
 		return (NULL);
-	i = 0;
+	// i = 0;
 	len_total = ft_strlen(s1) + ft_strlen(s2);
 	strjoin = (char *)malloc(sizeof(char) * (len_total + 1));
 	if (!strjoin)

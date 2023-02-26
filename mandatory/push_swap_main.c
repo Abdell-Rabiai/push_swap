@@ -32,7 +32,7 @@ void fill_a(t_infos *data)
 	i = 0;
 	while (i < data->stack_size)
 	{
-		temp = ft_new_node(data->numbers[i], -1);
+		temp = ft_new_node(data->numbers[i], -1, -1);
 		ft_push_rear(data->a, temp);
 		i++;
 	}
@@ -51,18 +51,18 @@ void print_ab(t_infos *data)
 	ft_printf("stack A {max : %d} {min : %d} <----> stack B\n", data->a->max, data->a->min);
 	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf("%d[%d]              %d\n", temp_a->number, temp_a->index, temp_b->number);
+		ft_printf(" : a* %d : [index : %d]-[indice :%d]              b* %d\n", temp_a->number, temp_a->index, temp_a->indice, temp_b->number);
 		temp_a = temp_a->next;
 		temp_b = temp_b->next;
 	}
 	while (temp_a != NULL)
 	{
-		ft_printf("%d[%d]\n", temp_a->number, temp_a->index);
+		ft_printf(" : a* %d : [index : %d]-[indice :%d]\n", temp_a->number, temp_a->index, temp_a->indice);
 		temp_a = temp_a->next;
 	}
 	while (temp_b != NULL)
 	{
-		ft_printf("               %d\n", temp_b->number);
+		ft_printf(" : b* %d : [index : %d]-[indice :%d]\n", temp_b->number, temp_b->index, temp_b->indice);
 		temp_b = temp_b->next;
 	}
 }

@@ -21,6 +21,7 @@ typedef struct s_node
 {
 	int				number;
 	int				index;
+	int				indice;
 	struct s_node	*next;
 	struct s_node	*previous;
 }					t_node;
@@ -51,7 +52,7 @@ void		check_argument(char *arg);
 /*Deque_Operations*/
 
 // t_node		*ft_new_node(int number);
-t_node		*ft_new_node(int number, int index);
+t_node		*ft_new_node(int number, int index, int indice);
 void		ft_push_rear(t_deque *deck, t_node *poped);
 void		ft_push_front(t_deque *deck, t_node *poped);
 t_node		*ft_pop_front(t_deque *deck);

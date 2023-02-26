@@ -24,7 +24,7 @@ void sa(t_infos *data, bool print)
 	ft_push_front(data->a, temp_first);
 	ft_push_front(data->a, temp_second);
 	if (print)
-		ft_printf("sa\n");
+		printf("sa\n");
 }
 
 void sb(t_infos *data, bool print)
@@ -39,14 +39,14 @@ void sb(t_infos *data, bool print)
 	ft_push_front(data->b, temp_first);
 	ft_push_front(data->b, temp_second);
 	if (print)
-		ft_printf("sb\n");
+		printf("sb\n");
 }
 
 void	ss(t_infos *data)
 {
 	sa(data, 0);
 	sb(data, 0);
-	ft_printf("ss\n");
+	printf("ss\n");
 }
 
 void pb(t_infos *data)
@@ -57,7 +57,7 @@ void pb(t_infos *data)
 		return;
 	temp_first_a = ft_pop_front(data->a);
 	ft_push_front(data->b, temp_first_a);
-	ft_printf("pb\n");
+	printf("pb\n");
 }
 
 void pa(t_infos *data)
@@ -68,7 +68,7 @@ void pa(t_infos *data)
 		return;
 	temp_first_b = ft_pop_front(data->b);
 	ft_push_front(data->a, temp_first_b);
-	ft_printf("pa\n");
+	printf("pa\n");
 }
 
 void ra(t_infos *data, bool print)
@@ -80,7 +80,7 @@ void ra(t_infos *data, bool print)
 	temp_first = ft_pop_front(data->a);
 	ft_push_rear(data->a, temp_first);
 	if (print)
-		ft_printf("ra\n");		
+		printf("ra\n");		
 }
 
 void rb(t_infos *data, bool print)
@@ -92,7 +92,7 @@ void rb(t_infos *data, bool print)
 	temp_first = ft_pop_front(data->b);
 	ft_push_rear(data->b, temp_first);
 	if (print)
-		ft_printf("rb\n");		
+		printf("rb\n");		
 }
 
 void rr(t_infos *data)
@@ -101,7 +101,7 @@ void rr(t_infos *data)
 		return ;
 	ra(data, 0);
 	rb(data, 0);
-	ft_printf("rr\n");
+	printf("rr\n");
 }
 
 void rra(t_infos *data, bool print)
@@ -113,7 +113,7 @@ void rra(t_infos *data, bool print)
 	temp_last = ft_pop_rear(data->a);
 	ft_push_front(data->a, temp_last);
 	if (print)
-		ft_printf("rra\n");	
+		printf("rra\n");	
 }
 
 void rrb(t_infos *data, bool print)
@@ -125,7 +125,7 @@ void rrb(t_infos *data, bool print)
 	temp_last = ft_pop_rear(data->b);
 	ft_push_front(data->b, temp_last);
 	if (print)
-		ft_printf("rrb\n");	
+		printf("rrb\n");	
 }
 
 void rrr(t_infos *data)
@@ -134,5 +134,5 @@ void rrr(t_infos *data)
 		return ;
 	rra(data, 0);
 	rrb(data, 0);
-	ft_printf("rrr\n");
+	printf("rrr\n");
 }

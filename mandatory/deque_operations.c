@@ -34,7 +34,7 @@ void ft_free_everything(t_infos *data)
 	free(data->numbers);
 }
 
-t_node *ft_new_node(int number, int index)
+t_node *ft_new_node(int number, int index, int indice)
 {
 	t_node *new_node;
 
@@ -43,6 +43,7 @@ t_node *ft_new_node(int number, int index)
 	new_node->next = NULL;
 	new_node->previous = NULL;
 	new_node->index = index;
+	new_node->indice = indice;
 	return (new_node);
 }
 
@@ -88,7 +89,7 @@ t_node *ft_pop_front(t_deque *deck)
 		return (NULL);
 	temp = deck->head;
 	number = temp->number;
-	poped = ft_new_node(number, temp->index);
+	poped = ft_new_node(number, temp->index, temp->indice);
 	if (!poped)
 		return (NULL);
 	deck->head = deck->head->next;
@@ -112,7 +113,7 @@ t_node *ft_pop_rear(t_deque *deck)
 		return (NULL);
 	temp = deck->tail;
 	number = temp->number;
-	poped = ft_new_node(number, temp->index);
+	poped = ft_new_node(number, temp->index, temp->indice);
 	if (!poped)
 		return (NULL);
 	deck->tail = deck->tail->previous;

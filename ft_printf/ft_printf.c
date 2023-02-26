@@ -54,21 +54,21 @@ static void	ft_put_adress_count(void *adresse, int fd, int *count)
 static void	ft_convert_format(va_list arg_p, char format_character, int *count)
 {
 	if (format_character == '%')
-		ft_putchar_fd_count(format_character, 2, count);
+		ft_putchar_fd_count(format_character,1, count);
 	else if (format_character == 's')
-		ft_putstr_fd_count(va_arg(arg_p, char *), 2, count);
+		ft_putstr_fd_count(va_arg(arg_p, char *),1, count);
 	else if (format_character == 'c')
-		ft_putchar_fd_count(va_arg(arg_p, int), 2, count);
+		ft_putchar_fd_count(va_arg(arg_p, int),1, count);
 	else if (format_character == 'd' || format_character == 'i')
-		ft_putnbr_base(va_arg(arg_p, int), 2, count, "0123456789");
+		ft_putnbr_base(va_arg(arg_p, int),1, count, "0123456789");
 	else if (format_character == 'u')
-		ft_putnbr_fd_uns_count(va_arg(arg_p, int), 2, count);
+		ft_putnbr_fd_uns_count(va_arg(arg_p, int),1, count);
 	else if (format_character == 'x')
-		ft_putnbr_base(va_arg(arg_p, int), 2, count, "0123456789abcdef");
+		ft_putnbr_base(va_arg(arg_p, int),1, count, "0123456789abcdef");
 	else if (format_character == 'X')
-		ft_putnbr_base(va_arg(arg_p, int), 2, count, "0123456789ABCDEF");
+		ft_putnbr_base(va_arg(arg_p, int),1, count, "0123456789ABCDEF");
 	else if (format_character == 'p')
-		ft_put_adress_count(va_arg(arg_p, void *), 2, count);
+		ft_put_adress_count(va_arg(arg_p, void *),1, count);
 }
 
 int	ft_printf(const char *string_format, ...)
@@ -81,7 +81,7 @@ int	ft_printf(const char *string_format, ...)
 	while (*string_format)
 	{
 		if (*string_format != '%')
-			ft_putchar_fd_count(*string_format, 2, &count);
+			ft_putchar_fd_count(*string_format, 1, &count);
 		else if (*string_format != '\0'
 			&& ft_strchar(SPECIFIER, *(string_format + 1)))
 		{
