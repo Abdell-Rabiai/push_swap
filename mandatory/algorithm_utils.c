@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:12 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 17:50:27 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/27 21:55:31 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void get_node_to_top_of_a(t_infos *data, t_node *n)
 		if (temp->number == n->number && temp->indice >= midian)
 		{
 			num = temp->number;	
-			while (temp->number != data->a->head->number)
+			while (num != data->a->head->number)
 				ra(data, 1);
 			break;
 		}
@@ -185,77 +185,151 @@ void get_node_to_top_of_a(t_infos *data, t_node *n)
 		}
 		temp = temp->next;
 	}
-	
 }
 
-void get_node_to_top_of_b(t_infos *data, t_node *n)
+void get_node_to_top_of_b(t_infos *data, int position)
 {
 	t_node *temp;
 	int		midian;
 
 	midian = data->b->size / 2;
 	temp = data->b->head;
-	int num;
-	while (temp)
+	while(position >= midian && position)
 	{
-		if (temp->number == n->number && temp->indice >= midian)
-		{
-			num = temp->number;
-			while (num != data->b->head->number)
-				rb(data, 1);
-			break;
-		}
-		else if(temp->number == n->number && temp->indice < midian)
-		{
-			num = temp->number;
-			while (num != data->b->head->number)
-				rrb(data, 1);
-			break;
-		}
-		else 
-			temp = temp->next;
+		rrb(data, 1);
+		position--;
 	}
-	
+	while(position < midian && position)
+	{
+		rb(data, 1);
+		position--;
+	}
 }
 
-void handle_top_of_b(t_infos *data, int mid)
-{
-	t_deque *b;
-	t_node *t;
-
-	b = data->b;
-	t = b->head;
-	index_the_stack(b);
-	if (t->indice < mid)
-		get_node_to_top_of_b(data, t);
-}
-
-void push_chunks_to_b(t_infos *data, int start_of_chunk, int end_of_chunk)
+void push_chunks_to_b(t_infos *data) // 0 --> 4
 {
 	t_deque *a;
-	t_node *temp_a;
-	int x;
-	int mid;
+	t_deque *b;
+
+	int c;
+	int end_of_chunk = data->stack_size/5;
+	int	mid;
+	int	mid_fix;
 
 	a = data->a;
-	temp_a = a->head;
-	x = 0;
-	mid = start_of_chunk + end_of_chunk/2;
-	while (temp_a)
+	b = data->b;
+	c = end_of_chunk;
+	mid = end_of_chunk/2;
+	mid_fix = mid;
+	while (a->head)
 	{
-		x = 0;
-		if (temp_a->index == start_of_chunk && start_of_chunk != end_of_chunk)
+		while (a->head && b->size != end_of_chunk)
 		{
-			get_node_to_top_of_a(data, temp_a);
-			pb(data);
-			handle_top_of_b(data, mid);
-			start_of_chunk++;
-			x = 1;
-			temp_a = a->head;
+			if (a->head->index <= end_of_chunk)
+			{
+				if (a->head->index < mid)
+					pb(data);
+				else
+				{
+					pb(data);
+					rb(data, 1);
+				}
+			}
+			else
+				ra(data, 1);
+		
 		}
-		if (x == 0)
-			temp_a = temp_a->next;
+		end_of_chunk += c;
+		mid = end_of_chunk - mid_fix;	
 	}
+}
+/*
+count = chunk;
+while (stack_a)
+{
+	while (size(stack_b) < chunk)
+	{
+		if (stack_a->data < chunk)
+		[
+			if (stack_a->index < chunk/2)
+				pb;
+			else
+				pb;
+				rb;
+		]
+		else
+			ra;
+	}
+	chunk += count;
+}
+*/
+
+int return_position(t_deque *a, t_node *temp_b)
+{
+	if (!a || !temp_b || !a->head)
+        return (-1);
+	t_node *temp;
+	int		i;
+
+	i = 0;
+	temp = a->head;
+	while (temp)
+	{
+		if (temp->number == temp_b->number)
+			return (i);
+		i++;
+		temp = temp->next;
+	}
+	return (-1);
+}
+t_node *get_max_node(t_deque *a)
+{
+	t_node *max_num;
+	t_node *temp;
+
+	temp = a->head;
+	max_num = temp;
+	while (temp->next != NULL)
+	{
+		if (max_num->number < temp->next->number)
+			max_num = temp->next;
+		temp = temp->next;
+	}
+	return max_num;
+}
+
+t_node *get_before_max_node(t_deque *a)
+{
+	t_node *before_max_num;
+	t_node *temp;
+	t_node *max_num;
+
+	temp = a->head;
+	max_num = get_max_node(a);
+	before_max_num = temp;
+	if (max_num->number == a->head->number)
+		before_max_num = temp->next;
+	while (temp->next != NULL)
+	{
+		if (before_max_num->number < temp->next->number && temp->next->number < max_num->number)
+			before_max_num = temp->next;
+		temp = temp->next;
+	}
+	return before_max_num;
+}
+
+int get_number_of_instructions(t_deque *a, t_node *temp_b)
+{
+	int i;
+	int position;
+
+	i = 0;
+	position = return_position(a, temp_b);
+	if (position > ft_get_size(a)/2 && position)
+		i = ft_get_size(a) - position;
+	if (position <= ft_get_size(a)/2 && position)
+		i = position;
+	return (0);
 }
 
 void push_chunks_back_to_a(t_infos *data)
@@ -263,49 +337,48 @@ void push_chunks_back_to_a(t_infos *data)
 	t_deque *b;
 	t_node *temp_b;
 	int length;
-	// int	i;
-	int x;
 
 	b = data->b;
 	temp_b = b->head;
 	length = b->size - 1;
-	// printf("HELLO %d WOLRD \n",length);
-	// i = 0;
-	while (temp_b)
+	while (data->b->head)
 	{
-		x = 0;
-		if (temp_b->index == length)
+		if (get_number_of_instructions(data->b, get_max_node(data->b)) >= get_number_of_instructions(data->b, get_before_max_node(data->b)))
 		{
-			get_node_to_top_of_b(data, temp_b);
-			pa(data);
-			length--;
-			x = 1;
-			temp_b = b->head;
+			while (return_position(data->b, get_max_node(data->b)) > data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+				rrb(data, 1);
+			while (return_position(data->b, get_max_node(data->b)) <= data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+				rb(data, 1);
+			if (!return_position(data->b, get_max_node(data->b)) && data->b)
+				pa(data);
+
 		}
-		if (x == 0)
-			temp_b = temp_b->next;
+		else
+		{
+			while (return_position(data->b, get_before_max_node(data->b)) > data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+				rrb(data, 1);
+			while (return_position(data->b, get_before_max_node(data->b)) <= data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+				rb(data, 1);
+			if (!return_position(data->b, get_before_max_node(data->b)))
+				pa(data);
+
+			while (return_position(data->b, get_max_node(data->b)) > data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+				rrb(data, 1);
+			while (return_position(data->b, get_max_node(data->b)) <= data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+				rb(data, 1);
+			if (!return_position(data->b, get_max_node(data->b)))
+				{pa(data);
+				sa(data, 1);}
+		}
+		
 	}
+	// printf("GOOGLE	\n");
 }
+
 
 void sort_more_than_5(t_infos *data)
 {
-	int start_of_chunk;
-	int end_of_chunk;
-	int length;
-	int increment;
-
-	length = data->stack_size;
-	start_of_chunk = 0;
-	increment = length / 5;
-	end_of_chunk = increment;
-
-	while (length >= 0)
-	{
-		push_chunks_to_b(data, start_of_chunk, end_of_chunk);
-		start_of_chunk = start_of_chunk + increment;
-		end_of_chunk = end_of_chunk + increment;
-		length = length - increment;
-	}
+	push_chunks_to_b(data);
 	push_chunks_back_to_a(data);
 }
 
@@ -318,7 +391,7 @@ void sort_the_stack(t_infos *data)
 		return ;
 	else if (data->stack_size == 2)
 		sort_2(data);
-	else if (data->stack_size >= 5)
+	else if (data->stack_size > 5)
 	    sort_more_than_5(data);
 	// else if (data->stack_size == 5)
 	//     sort_5(data);

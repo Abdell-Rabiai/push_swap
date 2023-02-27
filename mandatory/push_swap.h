@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 21:32:09 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/27 20:18:55 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			is_all_spaces(char *arg);
 int			is_there_character(char *arg);
 int			is_there_character_after_the_number(char *arg);
 void		check_argument(char *arg);
+int ft_get_size(t_deque *deck);
 /*Deque_Operations*/
 
 // t_node		*ft_new_node(int number);
@@ -59,6 +60,7 @@ t_node		*ft_pop_front(t_deque *deck);
 t_node		*ft_pop_rear(t_deque *deck);
 void		ft_free_everything(t_infos *data);
 void		ft_free_stack(t_deque *a);
+t_node		*get_max_node(t_deque *a);
 /*Push Swao Moves*/
 
 void	sa(t_infos *data, bool print);
@@ -77,8 +79,13 @@ void	rrr(t_infos *data);
 void	sort_the_stack(t_infos *data);
 void	sort_3(t_infos *data);
 int		return_max(t_deque *a);
+int		return_before_max(t_deque *a);
 int		return_min(t_deque *a);
 int		return_min_for_indexing(t_deque *a);
 void	index_the_stack(t_deque *a);
 bool	is_sorted(t_deque *a);
+int		get_number_of_instructions(t_deque *a, t_node *temp_b);
+t_node *get_before_max_node(t_deque *a);
+int return_position(t_deque *a, t_node *temp_b);
+void print_ab(t_infos *data);
 #endif
