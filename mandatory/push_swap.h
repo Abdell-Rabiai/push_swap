@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/27 20:18:55 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 15:51:42 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_node
 	int				number;
 	int				index;
 	int				indice;
+	int				moves;
 	struct s_node	*next;
 	struct s_node	*previous;
 }					t_node;
@@ -49,7 +50,7 @@ int			is_all_spaces(char *arg);
 int			is_there_character(char *arg);
 int			is_there_character_after_the_number(char *arg);
 void		check_argument(char *arg);
-int ft_get_size(t_deque *deck);
+int			ft_get_size(t_deque *deck);
 /*Deque_Operations*/
 
 // t_node		*ft_new_node(int number);
@@ -85,7 +86,8 @@ int		return_min_for_indexing(t_deque *a);
 void	index_the_stack(t_deque *a);
 bool	is_sorted(t_deque *a);
 int		get_number_of_instructions(t_deque *a, t_node *temp_b);
-t_node *get_before_max_node(t_deque *a);
-int return_position(t_deque *a, t_node *temp_b);
-void print_ab(t_infos *data);
+t_node	*get_before_max_node(t_deque *a);
+int		return_position(t_deque *a, t_node *temp_b);
+void	print_ab(t_infos *data);
+t_node *return_lowest(t_deque *a, int start_of_chunk, int end_of_chunk);
 #endif

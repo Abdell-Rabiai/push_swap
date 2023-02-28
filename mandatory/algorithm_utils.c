@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:12 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/27 21:55:31 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:15:46 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,110 +159,79 @@ void sort_2(t_infos *data)
 		sa(data, 1);
 }
 
-void get_node_to_top_of_a(t_infos *data, t_node *n)
-{
-	t_node *temp;
-	int		midian;
+// void get_node_to_top_of_a(t_infos *data, t_node *n)
+// {
+// 	t_node *temp;
+// 	int		midian;
 
-	midian = data->a->size / 2;
-	temp = data->a->head;
-	int num;
-	while (temp)
-	{
-		if (temp->number == n->number && temp->indice >= midian)
-		{
-			num = temp->number;	
-			while (num != data->a->head->number)
-				ra(data, 1);
-			break;
-		}
-		else if(temp->number == n->number && temp->indice < midian)
-		{
-			num = temp->number;
-			while (num != data->a->head->number)
-				rra(data, 1);
-			break;
-		}
-		temp = temp->next;
-	}
-}
+// 	midian = data->a->size / 2;
+// 	temp = data->a->head;
+// 	int num;
+// 	while (temp)
+// 	{
+// 		if (temp->number == n->number && temp->indice >= midian)
+// 		{
+// 			num = temp->number;	
+// 			while (num != data->a->head->number)
+// 				ra(data, 1);
+// 			break;
+// 		}
+// 		else if(temp->number == n->number && temp->indice < midian)
+// 		{
+// 			num = temp->number;
+// 			while (num != data->a->head->number)
+// 				rra(data, 1);
+// 			break;
+// 		}
+// 		temp = temp->next;
+// 	}
+// }
 
-void get_node_to_top_of_b(t_infos *data, int position)
-{
-	t_node *temp;
-	int		midian;
-
-	midian = data->b->size / 2;
-	temp = data->b->head;
-	while(position >= midian && position)
-	{
-		rrb(data, 1);
-		position--;
-	}
-	while(position < midian && position)
-	{
-		rb(data, 1);
-		position--;
-	}
-}
-
-void push_chunks_to_b(t_infos *data) // 0 --> 4
+void push_chunks_to_b(t_infos *data)
 {
 	t_deque *a;
 	t_deque *b;
 
 	int c;
-	int end_of_chunk = data->stack_size/5;
+	int end_of_chunk;
+	int start_of_chunk;
 	int	mid;
-	int	mid_fix;
 
 	a = data->a;
 	b = data->b;
+	start_of_chunk = 0;
+	if (data->stack_size <= 100)
+		end_of_chunk = (data->a->size / 5);
+	if (data->stack_size > 100)
+		end_of_chunk = (data->a->size / 9);
 	c = end_of_chunk;
-	mid = end_of_chunk/2;
-	mid_fix = mid;
+	mid = (end_of_chunk + start_of_chunk)/2;
+	end_of_chunk--;
 	while (a->head)
 	{
-		while (a->head && b->size != end_of_chunk)
+		while (a->head && b->size < end_of_chunk)
 		{
-			if (a->head->index <= end_of_chunk)
+			if (a->head->index < end_of_chunk)
 			{
-				if (a->head->index < mid)
+				if (a->head->index <= mid)
 					pb(data);
 				else
 				{
 					pb(data);
-					rb(data, 1);
+					if (!(a->head->index < end_of_chunk))
+						rr(data);
+					else
+						rb(data, 1);
 				}
 			}
 			else
 				ra(data, 1);
-		
 		}
 		end_of_chunk += c;
-		mid = end_of_chunk - mid_fix;	
+		start_of_chunk += c;
+		mid = (end_of_chunk + start_of_chunk)/2;
 	}
 }
-/*
-count = chunk;
-while (stack_a)
-{
-	while (size(stack_b) < chunk)
-	{
-		if (stack_a->data < chunk)
-		[
-			if (stack_a->index < chunk/2)
-				pb;
-			else
-				pb;
-				rb;
-		]
-		else
-			ra;
-	}
-	chunk += count;
-}
-*/
 
 int return_position(t_deque *a, t_node *temp_b)
 {
@@ -351,26 +320,26 @@ void push_chunks_back_to_a(t_infos *data)
 				rb(data, 1);
 			if (!return_position(data->b, get_max_node(data->b)) && data->b)
 				pa(data);
-
 		}
 		else
 		{
-			while (return_position(data->b, get_before_max_node(data->b)) > data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+			while (return_position(data->b, get_before_max_node(data->b)) >= data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
 				rrb(data, 1);
-			while (return_position(data->b, get_before_max_node(data->b)) <= data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+			while (return_position(data->b, get_before_max_node(data->b)) < data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
 				rb(data, 1);
 			if (!return_position(data->b, get_before_max_node(data->b)))
 				pa(data);
 
-			while (return_position(data->b, get_max_node(data->b)) > data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+			while (return_position(data->b, get_max_node(data->b)) >= data->b->size/2 && return_position(data->b, get_max_node(data->b)))
 				rrb(data, 1);
-			while (return_position(data->b, get_max_node(data->b)) <= data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+			while (return_position(data->b, get_max_node(data->b)) < data->b->size/2 && return_position(data->b, get_max_node(data->b)))
 				rb(data, 1);
 			if (!return_position(data->b, get_max_node(data->b)))
-				{pa(data);
-				sa(data, 1);}
+			{
+				pa(data);
+				sa(data, 1);
+			}
 		}
-		
 	}
 	// printf("GOOGLE	\n");
 }
@@ -384,9 +353,6 @@ void sort_more_than_5(t_infos *data)
 
 void sort_the_stack(t_infos *data)
 {
-	// t_deque *temp_a;
-
-	// temp_a = data->a;
 	if (data->stack_size == 1 || data->stack_size == 0)
 		return ;
 	else if (data->stack_size == 2)

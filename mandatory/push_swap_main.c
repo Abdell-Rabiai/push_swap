@@ -6,13 +6,12 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/27 21:13:30 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:22:03 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// create a funtion that will initialize the data structure data
 void initialize_data(t_infos *data)
 {
 	data->a = (t_deque *)malloc(sizeof(t_deque));
@@ -79,13 +78,9 @@ int	main(int argc, char **argv)
 	index_the_stack((&data)->a);
 	
 	sort_the_stack(&data);
-	// printf("{%d}\n" , return_before_max((&data)->a));	
 	// printf("\n---------->AFTER<---------- \n\n");
 	// print_ab(&data);
-	// printf("POSITION OF MAX ==> %d\n", return_position((&data)->a, get_max_node((&data)->a)));
-	// printf("POSITION OF BEFORE MAX ==> %d\n", return_position((&data)->a, get_before_max_node((&data)->a)));
-	// printf("BEFORE MAX ==> %d", get_number_of_instructions((&data)->a, get_before_max_node((&data)->a)));
-	
 	ft_free_everything(&data);
+	return (0);
 }
  
