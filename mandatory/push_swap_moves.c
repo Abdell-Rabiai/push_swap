@@ -6,19 +6,19 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:41 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/27 21:15:54 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:54:29 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sa(t_infos *data, bool print)
+void	sa(t_infos *data, bool print)
 {
 	t_node	*temp_first;
 	t_node	*temp_second;
 
 	if (data->a->size <= 1)
-		return;
+		return ;
 	temp_first = ft_pop_front(data->a);
 	temp_second = ft_pop_front(data->a);
 	ft_push_front(data->a, temp_first);
@@ -27,13 +27,13 @@ void sa(t_infos *data, bool print)
 		printf("sa\n");
 }
 
-void sb(t_infos *data, bool print)
+void	sb(t_infos *data, bool print)
 {
 	t_node	*temp_first;
 	t_node	*temp_second;
 
 	if (data->b->size <= 1)
-		return;
+		return ;
 	temp_first = ft_pop_front(data->b);
 	temp_second = ft_pop_front(data->b);
 	ft_push_front(data->b, temp_first);
@@ -49,90 +49,24 @@ void	ss(t_infos *data)
 	printf("ss\n");
 }
 
-void pb(t_infos *data)
+void	pb(t_infos *data)
 {
 	t_node	*temp_first_a;
 
 	if (data->a->size == 0)
-		return;
+		return ;
 	temp_first_a = ft_pop_front(data->a);
 	ft_push_front(data->b, temp_first_a);
 	printf("pb\n");
 }
 
-void pa(t_infos *data)
+void	pa(t_infos *data)
 {
 	t_node	*temp_first_b;
 
 	if (data->b->size == 0)
-		return;
+		return ;
 	temp_first_b = ft_pop_front(data->b);
 	ft_push_front(data->a, temp_first_b);
 	printf("pa\n");
-}
-
-void ra(t_infos *data, bool print)
-{
-	t_node	*temp_first;
-
-	if (data->a->size <= 1)
-			return ;
-	temp_first = ft_pop_front(data->a);
-	ft_push_rear(data->a, temp_first);
-	if (print)
-		printf("ra\n");		
-}
-
-void rb(t_infos *data, bool print)
-{
-	t_node	*temp_first;
-
-	if (data->b->size <= 1)
-			return ;
-	temp_first = ft_pop_front(data->b);
-	ft_push_rear(data->b, temp_first);
-	if (print)
-		printf("rb\n");		
-}
-
-void rr(t_infos *data)
-{
-	if (data->a->size <= 1 && data->b->size <= 1)
-		return ;
-	ra(data, 0);
-	rb(data, 0);
-	printf("rr\n");
-}
-
-void rra(t_infos *data, bool print)
-{
-	t_node	*temp_last;
-
-	if (data->a->size <= 1)
-		return;
-	temp_last = ft_pop_rear(data->a);
-	ft_push_front(data->a, temp_last);
-	if (print)
-		printf("rra\n");	
-}
-
-void rrb(t_infos *data, bool print)
-{
-	t_node	*temp_last;
-
-	if (data->b->size <= 1)
-		return;
-	temp_last = ft_pop_rear(data->b);
-	ft_push_front(data->b, temp_last);
-	if (print)
-		printf("rrb\n");	
-}
-
-void rrr(t_infos *data)
-{
-	if (data->a->size <= 1 && data->b->size <= 1)
-		return ;
-	rra(data, 0);
-	rrb(data, 0);
-	printf("rrr\n");
 }

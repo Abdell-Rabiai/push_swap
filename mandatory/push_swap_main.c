@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 12:48:38 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:22:03 by arabiai          ###   ########.fr       */
+/*   Created: 2023/02/28 18:27:29 by arabiai           #+#    #+#             */
+/*   Updated: 2023/02/28 18:30:18 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void initialize_data(t_infos *data)
+void	initialize_data(t_infos *data)
 {
 	data->a = (t_deque *)malloc(sizeof(t_deque));
 	data->b = (t_deque *)malloc(sizeof(t_deque));
@@ -24,10 +24,11 @@ void initialize_data(t_infos *data)
 	data->b->size = 0;
 }
 
-void fill_a(t_infos *data)
+void	fill_a(t_infos *data)
 {
-	int i;
-	t_node *temp;
+	int		i;
+	t_node	*temp;
+
 	i = 0;
 	while (i < data->stack_size)
 	{
@@ -37,31 +38,32 @@ void fill_a(t_infos *data)
 	}
 	return_max(data->a);
 	return_min(data->a);
-	
 }
 
-void print_ab(t_infos *data)
+void	print_ab(t_infos *data)
 {
-	t_node *temp_a;
-	t_node *temp_b;
+	t_node	*temp_a;
+	t_node	*temp_b;
 
 	temp_a = data->a->head;
 	temp_b = data->b->head;
-	ft_printf("stack A {max : %d} {min : %d} <----> stack B\n", data->a->max, data->a->min);
 	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]-[indice :%d]              b* %d\n", temp_a->number, temp_a->index, temp_a->indice, temp_b->number);
+		ft_printf(" : a* %d : [index : %d]-[indice :%d]              b* %d\n",
+			temp_a->number, temp_a->index, temp_a->indice, temp_b->number);
 		temp_a = temp_a->next;
 		temp_b = temp_b->next;
 	}
 	while (temp_a != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]-[indice :%d]\n", temp_a->number, temp_a->index, temp_a->indice);
+		ft_printf(" : a* %d : [index : %d]-[indice :%d]\n", temp_a->number,
+			temp_a->index, temp_a->indice);
 		temp_a = temp_a->next;
 	}
 	while (temp_b != NULL)
 	{
-		ft_printf(" : b* %d : [index : %d]-[indice :%d]\n", temp_b->number, temp_b->index, temp_b->indice);
+		ft_printf(" : b* %d : [index : %d]-[indice :%d]\n", temp_b->number,
+			temp_b->index, temp_b->indice);
 		temp_b = temp_b->next;
 	}
 }
@@ -73,14 +75,8 @@ int	main(int argc, char **argv)
 	initialize_data(&data);
 	parse_arguments(argc, argv, &data);
 	fill_a(&data);
-	// printf("\n----------->BEFORE<----------- \n\n");
-	// print_ab(&data);
 	index_the_stack((&data)->a);
-	
 	sort_the_stack(&data);
-	// printf("\n---------->AFTER<---------- \n\n");
-	// print_ab(&data);
 	ft_free_everything(&data);
 	return (0);
 }
- 

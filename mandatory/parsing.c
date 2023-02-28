@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/26 14:55:10 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:58:42 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,6 @@ void	parse_arguments(int argc, char **argv, t_infos *data)
 	splitd_arguments = ft_split(joined_arguments, ' ');
 	if (check_duplicates(splitd_arguments, data))
 		error_and_exit("ERROR : There Are Duplicate Arguments !!");
-	// else
-	// 	ft_printf("EVERYTHING IS GOOD !!\n\n");
-	// ft_printf("The Args joined : {%s}\n\n", joined_arguments);
 	ft_free_split(splitd_arguments);
 	free(joined_arguments);
 }

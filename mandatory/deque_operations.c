@@ -6,37 +6,15 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 21:42:08 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:57:36 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void ft_free_stack(t_deque *a)
+t_node	*ft_new_node(int number, int index, int indice)
 {
-	t_node *temp;
-	t_node *t;
-	temp = a->head;
-	while (temp)
-	{
-		t = temp->next;
-		free(temp);
-		temp = t;
-	}
-	free(a);
-}
-
-void ft_free_everything(t_infos *data)
-{
-	ft_free_stack(data->a);
-	ft_free_stack(data->b);
-	free(data->numbers);
-}
-
-t_node *ft_new_node(int number, int index, int indice)
-{
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	new_node->number = number;
@@ -63,7 +41,7 @@ void	ft_push_front(t_deque *deck, t_node *poped)
 	deck->size++;
 }
 
-void ft_push_rear(t_deque *deck, t_node *poped)
+void	ft_push_rear(t_deque *deck, t_node *poped)
 {
 	if (deck->tail == NULL)
 	{
@@ -79,12 +57,12 @@ void ft_push_rear(t_deque *deck, t_node *poped)
 	deck->size++;
 }
 
-t_node *ft_pop_front(t_deque *deck)
+t_node	*ft_pop_front(t_deque *deck)
 {
-	t_node *temp;
-	t_node *poped;
+	t_node	*poped;
+	t_node	*temp;
+	int		number;
 
-	int number;
 	if (deck->head == NULL)
 		return (NULL);
 	temp = deck->head;
@@ -102,12 +80,11 @@ t_node *ft_pop_front(t_deque *deck)
 	return (poped);
 }
 
-t_node *ft_pop_rear(t_deque *deck)
+t_node	*ft_pop_rear(t_deque *deck)
 {
-	t_node *temp;
-	t_node *poped;
-
-	int number;
+	t_node	*temp;
+	t_node	*poped;
+	int		number;
 
 	if (deck->tail == NULL)
 		return (NULL);

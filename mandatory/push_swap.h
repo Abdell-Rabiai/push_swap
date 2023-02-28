@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 15:51:42 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:48:21 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,36 @@ void		ft_free_stack(t_deque *a);
 t_node		*get_max_node(t_deque *a);
 /*Push Swao Moves*/
 
-void	sa(t_infos *data, bool print);
-void	sb(t_infos *data, bool print);
-void	ss(t_infos *data);
-void	pa(t_infos *data);
-void 	pb(t_infos *data);
-void	ra(t_infos *data, bool print);
-void	rb(t_infos *data, bool print);
-void	rr(t_infos *data);
-void	rra(t_infos *data, bool print);
-void	rrb(t_infos *data, bool print);
-void	rrr(t_infos *data);
+void		sa(t_infos *data, bool print);
+void		sb(t_infos *data, bool print);
+void		ss(t_infos *data);
+void		pa(t_infos *data);
+void		pb(t_infos *data);
+void		ra(t_infos *data, bool print);
+void		rb(t_infos *data, bool print);
+void		rr(t_infos *data);
+void		rra(t_infos *data, bool print);
+void		rrb(t_infos *data, bool print);
+void		rrr(t_infos *data);
 /**Algorithms helpers*/
 
-void	sort_the_stack(t_infos *data);
-void	sort_3(t_infos *data);
-int		return_max(t_deque *a);
-int		return_before_max(t_deque *a);
-int		return_min(t_deque *a);
-int		return_min_for_indexing(t_deque *a);
-void	index_the_stack(t_deque *a);
-bool	is_sorted(t_deque *a);
-int		get_number_of_instructions(t_deque *a, t_node *temp_b);
-t_node	*get_before_max_node(t_deque *a);
-int		return_position(t_deque *a, t_node *temp_b);
-void	print_ab(t_infos *data);
-t_node *return_lowest(t_deque *a, int start_of_chunk, int end_of_chunk);
+void		sort_the_stack(t_infos *data);
+void		sort_3(t_infos *data);
+int			return_max(t_deque *a);
+int			return_before_max(t_deque *a);
+int			return_min(t_deque *a);
+int			return_min_for_indexing(t_deque *a);
+void		index_the_stack(t_deque *a);
+bool		is_sorted(t_deque *a);
+int			get_number_of_instructions(t_deque *a, t_node *temp_b);
+t_node		*get_before_max_node(t_deque *a);
+int			return_position(t_deque *a, t_node *temp_b);
+void		print_ab(t_infos *data);
+t_node		*return_lowest(t_deque *a, int start_of_chunk, int end_of_chunk);
+
+void		sort_2(t_infos *data);
+
+void		push_chunks_back_to_a(t_infos *data);
+void		push_chunks_to_b(t_infos *data);
+
 #endif
