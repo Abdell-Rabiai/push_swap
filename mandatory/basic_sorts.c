@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:35:40 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:50:39 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/01 19:01:59 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_more_than_5(t_infos *data)
 {
 	push_chunks_to_b(data);
-	push_chunks_back_to_a(data);
+	// push_chunks_back_to_a(data);
 }
 
 bool	is_sorted(t_deque *a)
@@ -23,9 +23,9 @@ bool	is_sorted(t_deque *a)
 	t_node	*temp;
 
 	temp = a->head;
-	while (temp)
+	while (temp->next)
 	{
-		if (temp->index != temp->number)
+		if (temp->index > temp->next->index)
 			return (0);
 		temp = temp->next;
 	}

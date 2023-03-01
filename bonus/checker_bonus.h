@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_main.c                                   :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 18:27:29 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:10:30 by arabiai          ###   ########.fr       */
+/*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
+/*   Updated: 2023/03/01 17:25:37 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	main(int argc, char **argv)
-{
-	t_infos	data;
-
-	initialize_data(&data);
-	parse_arguments(argc, argv, &data);
-	fill_a(&data);
-	index_the_stack((&data)->a);
-	sort_the_stack(&data);
-	ft_free_everything(&data);
-	return (0);
-}
+# include "../mandatory/push_swap.h"
+void    ssc(t_infos *data);
+void	pbc(t_infos *data);
+void	pac(t_infos *data);
+void	rrrc(t_infos *data);
+void	rrc(t_infos *data);
+#endif

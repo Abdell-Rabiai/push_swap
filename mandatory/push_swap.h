@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:48:21 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/01 17:11:53 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int			is_there_character(char *arg);
 int			is_there_character_after_the_number(char *arg);
 void		check_argument(char *arg);
 int			ft_get_size(t_deque *deck);
+void		initialize_data(t_infos *data);
+void		fill_a(t_infos *data);
+void		print_ab(t_infos *data);
 /*Deque_Operations*/
 
 // t_node		*ft_new_node(int number);
@@ -62,7 +65,12 @@ t_node		*ft_pop_rear(t_deque *deck);
 void		ft_free_everything(t_infos *data);
 void		ft_free_stack(t_deque *a);
 t_node		*get_max_node(t_deque *a);
-/*Push Swao Moves*/
+
+int			ft_is_empty(t_deque *deck);
+int			ft_get_rear(t_deque *deck);
+int			ft_get_front(t_deque *deck);
+int			ft_get_size(t_deque *deck);
+/*Push Swap Moves*/
 
 void		sa(t_infos *data, bool print);
 void		sb(t_infos *data, bool print);

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:32:18 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/20 20:26:44 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/01 17:12:48 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ int	is_there_character(char *arg)
 	{
 		if ((*arg > '9' || *arg < '0') && *arg != ' '
 			&& (*arg != '+' && *arg != '-'))
-		{
-			printf("{%c}\n", *arg);
 			return (1);
-		}
 		else if ((*arg == '+' || *arg == '-')
 			&& (*(arg + 1) == '+' || *(arg + 1) == '-'))
-			error_and_exit("Consecuive Signes !!");
+			error_and_exit("ERROR");
 		arg++;
 	}
 	return (0);
@@ -64,12 +61,11 @@ int	is_there_character_after_the_number(char *arg)
 void	check_argument(char *arg)
 {
 	if (*arg == '\0')
-		error_and_exit("ERROR : Empty Argumrnt !!");
+		error_and_exit("ERROR");
 	else if (is_all_spaces(arg))
-		error_and_exit("ERROR : Only Apaces In Argument !!");
+		error_and_exit("ERROR");
 	else if (is_there_character(arg))
-		error_and_exit("ERROR : Characters in In Argument !!");
+		error_and_exit("ERROR");
 	else if (is_there_character_after_the_number(arg))
-		error_and_exit("ERROR : Characters On The Middle "
-			"Or After the number !!");
+		error_and_exit("ERROR");
 }

@@ -6,13 +6,12 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:16:32 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 20:34:31 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/01 13:51:32 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//HELLO HELLO HEL THIS FUNCTION IS USELESS
 int	get_number_of_instructions(t_deque *a, t_node *temp_b)
 {
 	int	i;

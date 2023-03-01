@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:58:42 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/01 14:48:19 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fill_numbers(char **strs, t_infos *data)
 	{
 		atoi = ft_atoi(strs[i]);
 		if (atoi == UINT_MAX)
-			error_and_exit("ERROR : Argument Is Not An Integer");
+			error_and_exit("ERROR");
 		data->numbers[i] = atoi;
 		i++;
 	}
@@ -77,12 +77,12 @@ void	parse_arguments(int argc, char **argv, t_infos *data)
 	char	*joined_arguments;
 
 	if (argc < 2)
-		error_and_exit("ERROR : Not Enough Arguments !!");
+		error_and_exit("ERROR");
 	joined_arguments = join_arguments(argc, argv);
 	data->stack_size = ft_how_many_words(joined_arguments, ' ');
 	splitd_arguments = ft_split(joined_arguments, ' ');
 	if (check_duplicates(splitd_arguments, data))
-		error_and_exit("ERROR : There Are Duplicate Arguments !!");
+		error_and_exit("ERROR");
 	ft_free_split(splitd_arguments);
 	free(joined_arguments);
 }
