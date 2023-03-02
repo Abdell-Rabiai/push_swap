@@ -52,7 +52,7 @@ libftprintf :
 	@cd ft_printf && make
 
 clean :
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
+	$(RM) $(OBJECTS) push_swap_main.o $(BONUS_OBJECTS)
 	$(ECHO3)
 
 fclean : clean

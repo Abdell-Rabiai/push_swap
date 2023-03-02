@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:02:57 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 21:59:25 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/02 14:55:36 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ void apply_the_moves(t_infos *data)
 			rrrc(data);
 		else
 		{
-			free(line);
 			ft_free_everything(data);
 			error_and_exit("Error");
 		}
-		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
 	ft_free_everything(data);

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:12 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 19:03:22 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:56:25 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void push_first_chunk_to_b(t_infos *data, int start_of_chunk, int end_of_chunk)
 			ra(data, 1);
 	}
 }
-
+int get_top(t_deque *a)
+{
+	return (a->head->index);
+}
 void push_chunks_to_b(t_infos *data)
 {
 	t_deque *a;
