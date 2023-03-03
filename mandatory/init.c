@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:11:20 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:11:30 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:10:34 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fill_a(t_infos *data)
 	i = 0;
 	while (i < data->stack_size)
 	{
-		temp = ft_new_node(data->numbers[i], -1, -1);
+		temp = ft_new_node(data->numbers[i], -1);
 		ft_push_rear(data->a, temp);
 		i++;
 	}
@@ -49,21 +49,21 @@ void	print_ab(t_infos *data)
 	temp_b = data->b->head;
 	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]-[indice :%d]              b* %d\n",
-			temp_a->number, temp_a->index, temp_a->indice, temp_b->number);
+		ft_printf(" : a* %d : [index : %d]              b* %d\n",
+			temp_a->number, temp_a->index, temp_b->number);
 		temp_a = temp_a->next;
 		temp_b = temp_b->next;
 	}
 	while (temp_a != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]-[indice :%d]\n", temp_a->number,
-			temp_a->index, temp_a->indice);
+		ft_printf(" : a* %d : [index : %d]\n", temp_a->number,
+			temp_a->index);
 		temp_a = temp_a->next;
 	}
 	while (temp_b != NULL)
 	{
-		ft_printf(" : b* %d : [index : %d]-[indice :%d]\n", temp_b->number,
-			temp_b->index, temp_b->indice);
+		ft_printf(" : b* %d : [index : %d]\n", temp_b->number,
+			temp_b->index);
 		temp_b = temp_b->next;
 	}
 }

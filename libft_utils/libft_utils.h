@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:05:33 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/25 13:52:59 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:53:11 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ long		ft_atoi(const char *str);
 int			ft_atohex(const char *str);
 int			get_index_base(int c, int base);
 char		*ft_strjoinp(char const *s1, char const *s2);
+char		*ft_strjoin0(char const *s1, char const *s2);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		file_error(int argc, char **argv);

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:37:01 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 14:48:19 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:55:40 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*join_arguments(int argc, char **argv)
 	while (i < argc)
 	{
 		check_argument(argv[i]);
-		temp = ft_strjoin(argv[i], " ");
+		temp = ft_strjoin0(argv[i], " ");
 		arg = ft_strjoinp(arg, temp);
 		i++;
 	}

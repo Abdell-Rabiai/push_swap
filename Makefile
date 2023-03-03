@@ -17,8 +17,7 @@ HEADER_FILES = get_next_line/get_next_line.h mandatory/push_swap.h libft_utils/l
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror 
-#-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm -rf
 
@@ -40,7 +39,7 @@ all : libftprintf $(NAME)
 %.o: %.c $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) :  $(OBJECTS) $(HEADER_FILES)
+$(NAME) :  $(OBJECTS) mandatory/push_swap_main.o $(HEADER_FILES)
 	 $(CC) $(CFLAGS) mandatory/push_swap_main.c $(OBJECTS) libftprintf.a -o $(NAME)
 
 bonus : libftprintf $(BONUS_NAME)
@@ -52,7 +51,7 @@ libftprintf :
 	@cd ft_printf && make
 
 clean :
-	$(RM) $(OBJECTS) push_swap_main.o $(BONUS_OBJECTS)
+	$(RM) $(OBJECTS) mandatory/push_swap_main.o $(BONUS_OBJECTS)
 	$(ECHO3)
 
 fclean : clean

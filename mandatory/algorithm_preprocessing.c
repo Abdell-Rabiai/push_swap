@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:16:32 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 13:51:32 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:11:04 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,6 @@ int	return_position(t_deque *a, t_node *temp_b)
 	return (0);
 }
 
-void	indice_the_stack(t_deque *a)
-{
-	t_node	*temp;
-	int		i;
-
-	i = 0;
-	temp = a->head;
-	while (temp)
-	{
-		temp->indice = i;
-		i++;
-		temp = temp->next;
-	}
-}
-
 void	index_the_stack(t_deque *a)
 {
 	t_node	*temp_a;
@@ -81,5 +66,4 @@ void	index_the_stack(t_deque *a)
 		i = 0;
 		temp_a = temp_a->next;
 	}
-	indice_the_stack(a);
 }

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:25:28 by arabiai           #+#    #+#             */
-/*   Updated: 2023/01/27 18:29:05 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:51:09 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin1(char const *s1, char const *s2);
 char	*ft_strdup(const char *src);
 #endif

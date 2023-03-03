@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:26:19 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 14:49:11 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:50:58 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,21 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dest_length + src_length);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin1(char const *s1, char const *s2)
 {
 	char	*strjoin;
-	// size_t	i;
+	size_t	i;
 	size_t	len_total;
 
 	if (!s1 || !s2)
 		return (NULL);
-	// i = 0;
+	i = 0;
 	len_total = ft_strlen(s1) + ft_strlen(s2);
 	strjoin = (char *)malloc(sizeof(char) * (len_total + 1));
 	if (!strjoin)
 		return (NULL);
 	ft_strlcpy(strjoin, s1, ft_strlen(s1) + 1);
 	ft_strlcat(strjoin, s2, len_total + 1);
+	free((char *)s1);
 	return (strjoin);
 }

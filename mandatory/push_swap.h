@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:11:53 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:10:03 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_node
 {
 	int				number;
 	int				index;
-	int				indice;
 	int				moves;
 	struct s_node	*next;
 	struct s_node	*previous;
@@ -57,7 +56,7 @@ void		print_ab(t_infos *data);
 /*Deque_Operations*/
 
 // t_node		*ft_new_node(int number);
-t_node		*ft_new_node(int number, int index, int indice);
+t_node		*ft_new_node(int number, int index);
 void		ft_push_rear(t_deque *deck, t_node *poped);
 void		ft_push_front(t_deque *deck, t_node *poped);
 t_node		*ft_pop_front(t_deque *deck);

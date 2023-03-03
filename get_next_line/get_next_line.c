@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:24:56 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/21 14:52:05 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:53:23 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*ft_strdup(const char *src)
 {
 	char	*copy;
-	// size_t	i;
+	size_t	i;
 
-	// i = 0;
+	i = 0;
 	copy = (char *)malloc(ft_strlen((char *)src) * sizeof(char) + 1);
 	if (!copy)
 		return (NULL);
@@ -87,7 +87,7 @@ static char	*read_file(int fd, char *saved_string)
 			return (NULL);
 		}
 		buffer[nbytes] = '\0';
-		saved_string = ft_strjoin(saved_string, buffer);
+		saved_string = ft_strjoin1(saved_string, buffer);
 	}
 	return (free(buffer), saved_string);
 }

@@ -6,13 +6,13 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:33:31 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:57:36 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:08:27 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*ft_new_node(int number, int index, int indice)
+t_node	*ft_new_node(int number, int index)
 {
 	t_node	*new_node;
 
@@ -21,7 +21,7 @@ t_node	*ft_new_node(int number, int index, int indice)
 	new_node->next = NULL;
 	new_node->previous = NULL;
 	new_node->index = index;
-	new_node->indice = indice;
+	// new_node->indice = indice;
 	return (new_node);
 }
 
@@ -67,7 +67,7 @@ t_node	*ft_pop_front(t_deque *deck)
 		return (NULL);
 	temp = deck->head;
 	number = temp->number;
-	poped = ft_new_node(number, temp->index, temp->indice);
+	poped = ft_new_node(number, temp->index);
 	if (!poped)
 		return (NULL);
 	deck->head = deck->head->next;
@@ -90,7 +90,7 @@ t_node	*ft_pop_rear(t_deque *deck)
 		return (NULL);
 	temp = deck->tail;
 	number = temp->number;
-	poped = ft_new_node(number, temp->index, temp->indice);
+	poped = ft_new_node(number, temp->index);
 	if (!poped)
 		return (NULL);
 	deck->tail = deck->tail->previous;
