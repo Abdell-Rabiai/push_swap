@@ -6,13 +6,13 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:23:00 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:25:04 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:28:06 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void    ssc(t_infos *data)
+void	ssc(t_infos *data)
 {
 	sa(data, 0);
 	sb(data, 0);
@@ -37,6 +37,7 @@ void	pac(t_infos *data)
 	temp_first_b = ft_pop_front(data->b);
 	ft_push_front(data->a, temp_first_b);
 }
+
 void	rrc(t_infos *data)
 {
 	if (data->a->size <= 1 && data->b->size <= 1)
