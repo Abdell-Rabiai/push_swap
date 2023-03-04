@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:32:18 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:12:48 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:13:59 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_and_exit(char *error)
 {
-	ft_printf("%s\n", error);
+	ft_printf(STDERR_FILENO, "%s\n", error);
 	exit(EXIT_FAILURE);
 }
 

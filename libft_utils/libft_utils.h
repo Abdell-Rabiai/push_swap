@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:05:33 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/03 17:53:11 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:20:11 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>

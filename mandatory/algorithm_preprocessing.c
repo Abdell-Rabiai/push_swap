@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:16:32 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/03 18:11:04 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 13:21:22 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,18 @@ void	index_the_stack(t_deque *a)
 		i = 0;
 		temp_a = temp_a->next;
 	}
+}
+
+bool	is_sorted(t_deque *a)
+{
+	t_node	*temp;
+
+	temp = a->head;
+	while (temp->next)
+	{
+		if (temp->index > temp->next->index)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }

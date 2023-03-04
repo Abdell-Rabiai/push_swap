@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:06:21 by arabiai           #+#    #+#             */
-/*   Updated: 2023/01/27 18:31:41 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:17:41 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <stdarg.h>
 # include <string.h>
 # include <fcntl.h>
 
 # define SPECIFIER "%scdiuxXp"
 
-int		ft_printf(const char *string_format, ...);
+int		ft_printf(int fd, const char *string_format, ...);
 
 void	ft_putchar_fd_count(char c, int fd, int *count);
 size_t	ft_strlen(const char *str);

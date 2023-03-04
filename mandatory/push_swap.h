@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:53:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/03 18:10:03 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 13:40:39 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void		sort_3(t_infos *data);
 int			return_max(t_deque *a);
 int			return_before_max(t_deque *a);
 int			return_min(t_deque *a);
-int			return_min_for_indexing(t_deque *a);
+t_node		*get_min_node(t_deque *a);
+void		get_min_to_the_top(t_infos *data);
 void		index_the_stack(t_deque *a);
 bool		is_sorted(t_deque *a);
 int			get_number_of_instructions(t_deque *a, t_node *temp_b);
@@ -98,8 +99,10 @@ int			return_position(t_deque *a, t_node *temp_b);
 void		print_ab(t_infos *data);
 t_node		*return_lowest(t_deque *a, int start_of_chunk, int end_of_chunk);
 
+/**basic sorts*/
 void		sort_2(t_infos *data);
-
+void		sort_3(t_infos *data);
+/*push_chunks*/
 void		push_chunks_back_to_a(t_infos *data);
 void		push_chunks_to_b(t_infos *data);
 

@@ -6,16 +6,17 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:12 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/02 18:56:25 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:03:12 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_first_chunk_to_b(t_infos *data, int start_of_chunk, int end_of_chunk)
+void	push_first_chunk_to_b(t_infos *data, int start_of_chunk,
+	int end_of_chunk)
 {
-	t_deque *a;
-	t_deque *b;
+	t_deque	*a;
+	t_deque	*b;
 
 	a = data->a;
 	b = data->b;
@@ -23,7 +24,7 @@ void push_first_chunk_to_b(t_infos *data, int start_of_chunk, int end_of_chunk)
 	{
 		if (a->head->index < end_of_chunk)
 		{
-			if(a->head->index <= (start_of_chunk + end_of_chunk) / 2)
+			if (a->head->index <= (start_of_chunk + end_of_chunk) / 2)
 				pb(data);
 			else
 			{
@@ -38,18 +39,14 @@ void push_first_chunk_to_b(t_infos *data, int start_of_chunk, int end_of_chunk)
 			ra(data, 1);
 	}
 }
-int get_top(t_deque *a)
-{
-	return (a->head->index);
-}
-void push_chunks_to_b(t_infos *data)
-{
-	t_deque *a;
-	t_deque *b;
 
-	int c;
-	int end_of_chunk;
-	int start_of_chunk;
+void	push_chunks_to_b(t_infos *data)
+{
+	t_deque	*a;
+	t_deque	*b;
+	int		c;
+	int		end_of_chunk;
+	int		start_of_chunk;
 
 	a = data->a;
 	b = data->b;
@@ -67,27 +64,56 @@ void push_chunks_to_b(t_infos *data)
 		start_of_chunk += c;
 	}
 }
-void get_max_to_the_top(t_infos *data)
+
+void	get_max_to_the_top(t_infos *data)
 {
-	while (return_position(data->b, get_max_node(data->b)) >= data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+	t_node	*max_node;
+	int		pos;
+
+	max_node = get_max_node(data->b);
+	pos = return_position(data->b, max_node);
+	while (pos >= data->b->size / 2 && pos)
+	{
 		rrb(data, 1);
-	while (return_position(data->b, get_max_node(data->b)) < data->b->size/2 && return_position(data->b, get_max_node(data->b)))
+		max_node = get_max_node(data->b);
+		pos = return_position(data->b, max_node);
+	}
+	while (pos < data->b->size / 2 && pos)
+	{
 		rb(data, 1);
+		max_node = get_max_node(data->b);
+		pos = return_position(data->b, max_node);
+	}
 }
 
-void get_before_max_to_the_top(t_infos *data)
+void	get_before_max_to_the_top(t_infos *data)
 {
-	while (return_position(data->b, get_before_max_node(data->b)) >= data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+	t_node	*max_node;
+	int		pos;
+
+	max_node = get_before_max_node(data->b);
+	pos = return_position(data->b, max_node);
+	while (pos >= data->b->size / 2 && pos)
+	{
 		rrb(data, 1);
-	while (return_position(data->b, get_before_max_node(data->b)) < data->b->size/2 && return_position(data->b, get_before_max_node(data->b)))
+		max_node = get_before_max_node(data->b);
+		pos = return_position(data->b, max_node);
+	}
+	while (pos < data->b->size / 2 && pos)
+	{
 		rb(data, 1);
+		max_node = get_before_max_node(data->b);
+		pos = return_position(data->b, max_node);
+	}
 }
 
-void push_chunks_back_to_a(t_infos *data)
+void	push_chunks_back_to_a(t_infos *data)
 {
 	while (data->b->head)
 	{
-		if (get_number_of_instructions(data->b, get_max_node(data->b)) <= get_number_of_instructions(data->b, get_before_max_node(data->b)))
+		if (get_number_of_instructions(data->b, get_max_node(data->b))
+			<= get_number_of_instructions(data->b,
+				get_before_max_node(data->b)))
 		{	
 			get_max_to_the_top(data);
 			if (!return_position(data->b, get_max_node(data->b)) && data->b)

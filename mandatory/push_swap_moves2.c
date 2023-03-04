@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:54:34 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:57:52 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:12:36 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rrr(t_infos *data)
 		return ;
 	rra(data, 0);
 	rrb(data, 0);
-	printf("rrr\n");
+	ft_printf(STDOUT_FILENO, "rrr\n");
 }
 
 void	ft_free_stack(t_deque *a)

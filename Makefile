@@ -64,3 +64,73 @@ fclean : clean
 re : fclean all
 
 .PHONY : clean fclean all re bonus
+
+
+# int sort_3(t_deque *deq)
+# {
+#     t_node *curr;
+
+#     // Set the current node to the second node in the deque
+#     curr = deq->first->next;
+#     // If the first value is greater than the second value {3, 2, 1}
+#     if (deq->first->num > curr->num)
+#     {
+#         // Move to the third node
+#         curr = curr->next;
+#         // If the first value is greater than the third value {3, 2, 1}
+#         if (deq->first->num > curr->num)
+#             // Move the first value to the end of the deque {2, 1, 3}
+#             do_ra(deq);
+#         // Set the current node to the second node in the deque
+#         curr = deq->first->next;
+#         // If the first value is greater than the second value {2, 1, 3}
+#         if (deq->first->num > curr->num)
+#             // Swap the positions of the first and second values {1, 2, 3}
+#             do_sa(deq);
+#     }
+#     // If the first value is less than the second value {1, 3, 2}
+#     else
+#     {
+#         // If the second value is less than the third value (already sorted in current state)
+#         if (curr->num < curr->next->num)
+#             // Swap the positions of the first and second values
+#             do_sa(deq);
+#         // If the second value is greater than the third value {1, 3, 2}
+#         else if (curr->num > curr->next->num)
+#         {
+#             // Move the last value to the front of the deque {2, 1, 3}
+#             do_rra(deq);
+#             // If the first value is greater than the second value
+#             if (deq->first->num > deq->first->next->num)
+#                 // Swap the positions of the first and second values {1, 2, 3}
+#                 do_sa(deq);
+#         }
+#     }
+#     // Return 0 to indicate successful completion of the function
+#     return (0);
+# }
+
+# 3 		 2		 1
+# 2   ra	 1   sa  2
+# 1		 3		 3
+
+# 3 		 1		 
+# 1   ra   2
+# 2		 3
+
+# 2		1
+# 1   sa  2
+# 3 		3
+# /******** else ********/
+
+# 1 // this one is sorted, nothing to do
+# 2
+# 3
+
+# 1 		 2		  1
+# 3   rra  1   sa   2
+# 2		 3 		  3
+
+# 2		 1
+# 3   rra  2 
+# 1  		 3 

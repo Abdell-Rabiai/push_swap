@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:23:27 by arabiai           #+#    #+#             */
-/*   Updated: 2023/01/27 19:38:09 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:06:03 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_putchar_fd_count(char c, int fd, int *count)
 {
-	fd = STDERR_FILENO;
 	write(fd, &c, 1);
 	(*count)++;
 }

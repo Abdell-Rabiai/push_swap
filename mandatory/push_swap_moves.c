@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:48:41 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/01 17:22:40 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:11:59 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sa(t_infos *data, bool print)
 	ft_push_front(data->a, temp_first);
 	ft_push_front(data->a, temp_second);
 	if (print)
-		printf("sa\n");
+		ft_printf(STDOUT_FILENO, "sa\n");
 }
 
 void	sb(t_infos *data, bool print)
@@ -39,14 +39,14 @@ void	sb(t_infos *data, bool print)
 	ft_push_front(data->b, temp_first);
 	ft_push_front(data->b, temp_second);
 	if (print)
-		printf("sb\n");
+		ft_printf(STDOUT_FILENO, "sb\n");
 }
 
 void	ss(t_infos *data)
 {
 	sa(data, 0);
 	sb(data, 0);
-	printf("ss\n");
+	ft_printf(STDOUT_FILENO, "ss\n");
 }
 
 void	pb(t_infos *data)
@@ -57,7 +57,7 @@ void	pb(t_infos *data)
 		return ;
 	temp_first_a = ft_pop_front(data->a);
 	ft_push_front(data->b, temp_first_a);
-	printf("pb\n");
+	ft_printf(STDOUT_FILENO, "pb\n");
 }
 
 void	pa(t_infos *data)
@@ -68,5 +68,5 @@ void	pa(t_infos *data)
 		return ;
 	temp_first_b = ft_pop_front(data->b);
 	ft_push_front(data->a, temp_first_b);
-	printf("pa\n");
+	ft_printf(STDOUT_FILENO, "pa\n");
 }

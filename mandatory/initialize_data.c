@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   initialize_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:11:20 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/03 18:10:34 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:11:16 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,35 @@ void	print_ab(t_infos *data)
 	temp_b = data->b->head;
 	while (temp_a != NULL && temp_b != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]              b* %d\n",
+		ft_printf(STDOUT_FILENO, " : a* %d : [index : %d]              b* %d\n",
 			temp_a->number, temp_a->index, temp_b->number);
 		temp_a = temp_a->next;
 		temp_b = temp_b->next;
 	}
 	while (temp_a != NULL)
 	{
-		ft_printf(" : a* %d : [index : %d]\n", temp_a->number,
+		ft_printf(STDOUT_FILENO, " : a* %d : [index : %d]\n", temp_a->number,
 			temp_a->index);
 		temp_a = temp_a->next;
 	}
 	while (temp_b != NULL)
 	{
-		ft_printf(" : b* %d : [index : %d]\n", temp_b->number,
+		ft_printf(STDOUT_FILENO, " : b* %d : [index : %d]\n", temp_b->number,
 			temp_b->index);
 		temp_b = temp_b->next;
 	}
+}
+
+void	get_min_to_the_top(t_infos *data)
+{
+	t_deque	*a;
+
+	a = data->a;
+	while (return_position(a, get_min_node(a)) >= a->size / 2
+		&& return_position(a, get_min_node(a)))
+		rra(data, 1);
+	while (return_position(a, get_min_node(a)) < a->size / 2
+		&& return_position(a, get_min_node(a)))
+		ra(data, 1);
+	pb(data);
 }

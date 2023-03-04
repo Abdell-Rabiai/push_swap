@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:44:56 by arabiai           #+#    #+#             */
-/*   Updated: 2023/02/28 18:46:51 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 13:28:53 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ t_node	*get_max_node(t_deque *a)
 		temp = temp->next;
 	}
 	return (max_num);
+}
+
+t_node	*get_min_node(t_deque *a)
+{
+	t_node	*min_num;
+	t_node	*temp;
+
+	temp = a->head;
+	min_num = temp;
+	while (temp->next)
+	{
+		if (min_num->number > temp->next->number)
+			min_num = temp->next;
+		temp = temp->next;
+	}
+	return (min_num);
 }
 
 t_node	*get_before_max_node(t_deque *a)

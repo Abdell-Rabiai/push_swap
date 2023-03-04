@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:25:28 by arabiai           #+#    #+#             */
-/*   Updated: 2023/03/03 17:51:09 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:18:19 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include<stdio.h>
 # include<unistd.h>
 # include<stdlib.h>
 # include<string.h>
